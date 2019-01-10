@@ -7,7 +7,7 @@
     "clean": "rimraf dist",
     "dev": "npm run clean && cross-env NODE_ENV=development node index.js",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Write some tests!\""
   },
   "repository": {
     "type": "git",

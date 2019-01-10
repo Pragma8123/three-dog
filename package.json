@@ -1,16 +1,47 @@
 {
   "name": "3d",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A Fallout themed Discord radio bot",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf dist",
+    "dev": "npm run clean && cross-env NODE_ENV=development node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@pragma8123.github.com:Pragma8123/three-dog"
+    "url": "git@github.com:Pragma8123/three-dog"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Max M <pragma8123@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@vue/component-compiler-utils": "^2.5.0",
+    "bufferutil": "^4.0.1",
+    "bulma": "^0.7.2",
+    "dotenv": "^6.2.0",
+    "eris": "^0.9.0",
+    "erlpack": "github:abalabahaha/erlpack",
+    "eventemitter3": "^3.1.0",
+    "express": "^4.16.4",
+    "node-opus": "^0.3.1",
+    "node-sass": "^4.11.0",
+    "pako": "^1.0.7",
+    "parcel-bundler": "^1.11.0",
+    "sass": "^1.16.0",
+    "sodium-native": "^2.2.4",
+    "uws": "^99.0.0",
+    "vue": "^2.5.21",
+    "vue-hot-reload-api": "^2.3.1",
+    "vue-template-compiler": "^2.5.21",
+    "zlib-sync": "^0.1.4"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "rimraf": "^2.6.3"
+  }
 }

@@ -14,7 +14,6 @@ app.use(bundler.middleware());
 
 bot.on('ready', err => {
   if (err) {
-    // eslint-disable-next-line no-console
     console.error(err);
   } else {
     // Start up radio track
@@ -23,9 +22,6 @@ bot.on('ready', err => {
       // We should restart the stream when it ends
       sharedStream.play(path.join(__dirname, 'gnr_audio.ogg'));
     });
-    // Start web admin console
-    const port = process.env.PORT || 8080;
-    app.listen(port);
   }
 });
 
@@ -116,4 +112,9 @@ bot.on('messageCreate', async msg => {
   }
 });
 
+// Start bot
 bot.connect();
+
+// Start web admin console
+const port = process.env.PORT || 8080;
+app.listen(port);

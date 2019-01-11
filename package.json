@@ -1,11 +1,11 @@
 {
-  "name": "3d",
+  "name": "three-dog-bot",
   "version": "0.1.0",
   "description": "A Fallout themed Discord radio bot",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "dev": "npm run clean && cross-env NODE_ENV=development node index.js",
+    "dev": "cross-env NODE_ENV=development node index.js",
     "lint": "eslint --ext .js,.vue src test",
     "lint-autofix": "eslint --ext .js,.vue src test --fix",
     "start": "node index.js",

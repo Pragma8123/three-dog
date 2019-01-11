@@ -117,4 +117,6 @@ bot.connect();
 
 // Start web admin console
 const port = process.env.PORT || 8080;
-app.listen(port);
+app.listen(port, err => {
+  if (err) console.error(err);
+});

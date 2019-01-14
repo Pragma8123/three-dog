@@ -4,18 +4,18 @@ const path = require('path');
 const Eris = require('eris');
 const app = require('express')();
 
-const bundler = new Bundler(path.join(__dirname, 'index.html'));
-
 const bot = new Eris(process.env.BOT_TOKEN);
 const sharedStream = new Eris.SharedStream();
-
-// Use parcel bundler middleware
-app.use(bundler.middleware());
 
 bot.on('ready', err => {
   if (err) {
     console.error(err);
   } else {
+    // Set bot status as help text
+    bot.editStatus('online', {
+      name: process.env.CMD_PREFIX,
+      type: 2, // Listening
+    });
     // Start up radio track
     sharedStream.play(path.join(__dirname, 'gnr_audio.ogg'));
     sharedStream.on('end', () => {
@@ -114,6 +114,10 @@ bot.on('messageCreate', async msg => {
 
 // Start bot
 bot.connect();
+
+// Use parcel bundler middleware
+const bundler = new Bundler(path.join(__dirname, 'index.html'));
+app.use(bundler.middleware());
 
 // Start web admin console
 const port = process.env.PORT || 8080;

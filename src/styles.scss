@@ -1,3 +1,9 @@
-$green: #1aff80;
+@font-face {
+  font-family: Overseer;
+  src: url(fonts/Overseer.otf);
+}
 
-@import "../node_modules/bulma/bulma.sass";
+$green: #1aff80; // Fallout 3 UI green
+$family-primary: Overseer;
+
+@import '../node_modules/bulma/bulma.sass';

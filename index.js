@@ -115,6 +115,15 @@ bot.on('messageCreate', async msg => {
 // Start bot
 bot.connect();
 
+// Define api
+app.get('/api/guilds', (req, res) => {
+  res.json(bot.guilds.filter(() => true).length);
+});
+app.get('/api/streams', (req, res) => {
+  res.json(sharedStream.voiceConnections.filter(() => true).length);
+});
+app.get('/api/uptime', (req, res) => res.json(bot.uptime));
+
 // Use parcel bundler middleware
 const bundler = new Bundler(path.join(__dirname, 'index.html'));
 app.use(bundler.middleware());

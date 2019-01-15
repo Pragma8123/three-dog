@@ -69,6 +69,7 @@ bot.on('messageCreate', async msg => {
         con => con.channelID === msg.member.voiceState.channelID
       );
       if (connection) sharedStream.remove(connection);
+      bot.leaveVoiceChannel(connection.channelID);
       break;
     }
     default: {

@@ -101,10 +101,6 @@ bot.on('messageCreate', async msg => {
                 '*Need Help?* [**Join the support server**](https://discord.gg/cH3dmX)',
             },
           ],
-          footer: {
-            icon_url: bot.user.avatarURL,
-            text: 'Three Dog',
-          },
         },
       });
       break;

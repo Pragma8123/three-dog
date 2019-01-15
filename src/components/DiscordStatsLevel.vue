@@ -1,5 +1,5 @@
 <template>
-  <nav class="level">
+  <nav class="level is-mobile">
     <div class="level-item has-text-centered">
       <div>
         <p class="heading has-text-success">Guilds</p>
@@ -15,7 +15,7 @@
     <div class="level-item has-text-centered">
       <div>
         <p class="heading has-text-success">Uptime</p>
-        <p class="title is-4">{{ uptimePretty }}</p>
+        <p class="title is-3">{{ uptimePretty }}</p>
       </div>
     </div>
   </nav>

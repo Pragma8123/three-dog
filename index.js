@@ -99,7 +99,7 @@ bot.on('messageCreate', async msg => {
             {
               name: 'Support Server',
               value:
-                '*Need Help?* [**Join the support server**](https://discord.gg/cH3dmX)',
+                '*Need Help?* [**Join the support server**](https://discord.gg/srJB3Y8)',
             },
           ],
         },

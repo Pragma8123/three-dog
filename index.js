@@ -69,6 +69,7 @@ bot.on('messageCreate', async msg => {
         con => con.channelID === msg.member.voiceState.channelID
       );
       if (connection) sharedStream.remove(connection);
+      bot.leaveVoiceChannel(connection.channelID);
       break;
     }
     default: {
@@ -98,13 +99,9 @@ bot.on('messageCreate', async msg => {
             {
               name: 'Support Server',
               value:
-                '*Need Help?* [**Join the support server**](https://discord.gg/cH3dmX)',
+                '*Need Help?* [**Join the support server**](https://discord.gg/srJB3Y8)',
             },
           ],
-          footer: {
-            icon_url: bot.user.avatarURL,
-            text: 'Three Dog',
-          },
         },
       });
       break;

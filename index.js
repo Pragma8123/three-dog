@@ -27,9 +27,12 @@ bot.on('ready', err => {
 
 bot.on('messageCreate', async msg => {
   if (msg.author.bot) return; // Ignore bots
-  if (!msg.content.startsWith(process.env.CMD_PREFIX)) return; // Ignore regular chat
+  if (!msg.content.toLowerCase().startsWith(process.env.CMD_PREFIX)) return; // Ignore regular chat
 
-  const command = msg.content.slice(process.env.CMD_PREFIX.length).trim();
+  const command = msg.content
+    .slice(process.env.CMD_PREFIX.length)
+    .toLowerCase()
+    .trim();
   switch (command) {
     case 'tunein': {
       // Make sure message is not a DM

@@ -4,8 +4,11 @@ const path = require('path');
 const Eris = require('eris');
 const app = require('express')();
 
+// Load commands
+const { help, tuneIn, tuneOut } = require('./commands');
+
 const bot = new Eris(process.env.BOT_TOKEN);
-const sharedStream = new Eris.SharedStream();
+bot.sharedStream = new Eris.SharedStream();
 
 bot.on('ready', err => {
   if (err) {
@@ -17,96 +20,36 @@ bot.on('ready', err => {
       type: 2, // Listening
     });
     // Start up radio track
-    sharedStream.play(path.join(__dirname, 'gnr_audio.ogg'));
-    sharedStream.on('end', () => {
+    bot.sharedStream.play(path.join(__dirname, 'gnr_audio.ogg'));
+    bot.sharedStream.on('end', () => {
       // We should restart the stream when it ends
-      sharedStream.play(path.join(__dirname, 'gnr_audio.ogg'));
+      bot.sharedStream.play(path.join(__dirname, 'gnr_audio.ogg'));
     });
   }
 });
 
-bot.on('messageCreate', async msg => {
+bot.on('messageCreate', msg => {
   if (msg.author.bot) return; // Ignore bots
   if (!msg.content.toLowerCase().startsWith(process.env.CMD_PREFIX)) return; // Ignore regular chat
 
+  // Cleanup user input
   const command = msg.content
     .slice(process.env.CMD_PREFIX.length)
     .toLowerCase()
     .trim();
+
+  // Process command
   switch (command) {
     case 'tunein': {
-      // Make sure message is not a DM
-      if (!msg.channel.guild) {
-        bot.createMessage(
-          msg.channel.id,
-          'This command can only be run in a server.'
-        );
-        return;
-      }
-
-      // Check if user is in a voice channel
-      if (!msg.member.voiceState.channelID) {
-        bot.createMessage(msg.channel.id, 'You are not in a voice channel.');
-        return;
-      }
-
-      // Try to join user's voice channel
-      try {
-        const connection = await bot.joinVoiceChannel(
-          msg.member.voiceState.channelID
-        );
-        if (!sharedStream.voiceConnections.find(con => con === connection))
-          sharedStream.add(connection);
-      } catch (err) {
-        bot.createMessage(
-          msg.channel.id,
-          'There was an error joining your voice channel!'
-        );
-        console.log(err);
-      }
+      tuneIn(bot, msg);
       break;
     }
     case 'tuneout': {
-      // Remove voice channel from shared stream if it exists
-      const connection = sharedStream.voiceConnections.find(
-        con => con.channelID === msg.member.voiceState.channelID
-      );
-      if (connection) sharedStream.remove(connection);
-      bot.leaveVoiceChannel(connection.channelID);
+      tuneOut(bot, msg);
       break;
     }
     default: {
-      // Help
-      const cmdPrefix = process.env.CMD_PREFIX;
-      bot.createMessage(msg.channel.id, {
-        embed: {
-          title: 'Commands',
-          author: {
-            name: bot.user.username,
-            icon_url: bot.user.avatarURL,
-          },
-          color: 0x1aff80, // Fallout 3 UI green
-          fields: [
-            {
-              name: 'Tune In',
-              value: `\`${cmdPrefix} tunein\``,
-            },
-            {
-              name: 'Tune Out',
-              value: `\`${cmdPrefix} tuneout\``,
-            },
-            {
-              name: 'Help',
-              value: `\`${cmdPrefix}\``,
-            },
-            {
-              name: 'Support Server',
-              value:
-                '*Need Help?* [**Join the support server**](https://discord.gg/srJB3Y8)',
-            },
-          ],
-        },
-      });
+      help(bot, msg);
       break;
     }
   }
@@ -120,7 +63,7 @@ app.get('/api/guilds', (req, res) => {
   res.json(bot.guilds.filter(() => true).length);
 });
 app.get('/api/streams', (req, res) => {
-  res.json(sharedStream.voiceConnections.filter(() => true).length);
+  res.json(bot.sharedStream.voiceConnections.filter(() => true).length);
 });
 app.get('/api/uptime', (req, res) => res.json(bot.uptime));
 

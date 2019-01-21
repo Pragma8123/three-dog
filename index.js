@@ -5,7 +5,7 @@ const Eris = require('eris');
 const app = require('express')();
 
 // Load commands
-const { help, tuneIn, tuneOut } = require('./commands');
+const { help, meme, tuneIn, tuneOut } = require('./commands');
 
 const bot = new Eris(process.env.BOT_TOKEN);
 bot.sharedStream = new Eris.SharedStream();
@@ -40,6 +40,10 @@ bot.on('messageCreate', msg => {
 
   // Process command
   switch (command) {
+    case 'meme': {
+      meme(bot, msg);
+      break;
+    }
     case 'tunein': {
       tuneIn(bot, msg);
       break;

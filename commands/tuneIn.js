@@ -1,4 +1,5 @@
 require('dotenv').config(); // Load env variables from .env
+const db = require('../knex');
 
 module.exports = async (bot, msg) => {
   // Make sure message is not a DM
@@ -28,6 +29,17 @@ module.exports = async (bot, msg) => {
       msg.channel.id,
       'There was an error joining your voice channel!'
     );
+    console.log(err);
+  }
+
+  try {
+    await db('command_log').insert({
+      guild_id: msg.channel.guild.id,
+      user_id: msg.author.id,
+      channel_id: msg.channel.id,
+      command: 'tunein',
+    });
+  } catch (err) {
     console.log(err);
   }
 };

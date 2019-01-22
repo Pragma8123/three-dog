@@ -20,6 +20,10 @@ module.exports = async (bot, msg) => {
           value: `\`${cmdPrefix} tuneout\``,
         },
         {
+          name: 'Fallout Meme',
+          value: `\`${cmdPrefix} meme\``,
+        },
+        {
           name: 'Help',
           value: `\`${cmdPrefix}\``,
         },

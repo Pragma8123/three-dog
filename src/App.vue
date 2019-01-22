@@ -1,5 +1,8 @@
 <template>
   <section class="hero is-fullheight is-dark">
+    <div class="hero-head">
+      <!-- Reserved -->
+    </div>
     <div class="hero-body">
       <div class="container has-text-centered">
         <div class="columns is-centered">
@@ -11,47 +14,39 @@
                 </figure>
               </div>
             </div>
-            <h1 class="title is-1">THREE DOG</h1>
+            <h1 class="title is-1">
+              <i>Three Dog</i>
+            </h1>
             <h4 class="subtitle is-4">
               <i>A Fallout Themed Discord Radio Bot</i>
             </h4>
-            <discord-stats-level :guilds="guilds" :streams="streams" :uptime="uptime"></discord-stats-level>
+          </div>
+        </div>
+        <div class="level">
+          <div class="level-item">
+            <a
+              class="button is-success"
+              href="https://discordapp.com/oauth2/authorize?client_id=461602422192734228&scope=bot&permissions=3148800"
+            >Invite Me</a>
           </div>
         </div>
       </div>
+    </div>
+    <div class="hero-foot">
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            Overseer font by
+            <a target="_" href="http://pixelsagas.com">Pixel Sagas</a>
+          </p>
+        </div>
+      </footer>
     </div>
   </section>
 </template>
 
 <script>
-import axios from 'axios';
-import DiscordStatsLevel from './components/DiscordStatsLevel.vue';
-
-export default {
-  name: 'App',
-  components: { DiscordStatsLevel },
-  data() {
-    return {
-      guilds: 0,
-      streams: 0,
-      uptime: 0,
-    };
-  },
-  mounted() {
-    axios
-      .get('/api/guilds')
-      .then(res => (this.guilds = res.data))
-      .catch(err => console.log(err));
-    axios
-      .get('/api/streams')
-      .then(res => (this.streams = res.data))
-      .catch(err => console.log(err));
-    axios
-      .get('/api/uptime')
-      .then(res => (this.uptime = res.data))
-      .catch(err => console.log(err));
-  },
-};
+export default { name: 'App' };
 </script>
 
 <style lang="scss">

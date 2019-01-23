@@ -31,7 +31,7 @@ module.exports = async (bot, msg) => {
         {
           name: 'Support Server',
           value:
-            '*Need Help?* [**Join the support server**](https://discord.gg/srJB3Y8)',
+            '*Need Help?* [**Join the support server**](https://discord.gg/QwfXED8)',
         },
       ],
     },

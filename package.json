@@ -8,6 +8,7 @@
     "dev": "cross-env NODE_ENV=development node index.js",
     "lint": "eslint --ext .js,.vue src test",
     "lint-autofix": "eslint --ext .js,.vue src test --fix",
+    "migrate": "knex migrate:latest",
     "start": "node index.js",
     "test": "echo \"Write some tests!\""
   },

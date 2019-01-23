@@ -14,18 +14,17 @@
                 </figure>
               </div>
             </div>
-            <h1 class="title is-1">
-              <i>Three Dog</i>
-            </h1>
+            <h1 class="title is-1">THREE DOG</h1>
             <h4 class="subtitle is-4">
-              <i>A Fallout Themed Discord Radio Bot</i>
+              <i>A Fallout Themed Discord Bot</i>
             </h4>
           </div>
         </div>
-        <div class="level">
-          <div class="level-item">
+        <div class="columns is-centered is-mobile">
+          <div class="column is-6">
             <a
-              class="button is-success"
+              class="button is-medium is-success"
+              target="_blank"
               href="https://discordapp.com/oauth2/authorize?client_id=461602422192734228&scope=bot&permissions=3148800"
             >Invite Me</a>
           </div>
@@ -33,14 +32,29 @@
       </div>
     </div>
     <div class="hero-foot">
-      <footer class="footer">
-        <div class="content has-text-centered">
-          <p>
-            Overseer font by
-            <a target="_" href="http://pixelsagas.com">Pixel Sagas</a>
-          </p>
+      <div class="content has-text-centered">
+        <div class="buttons has-addons is-centered">
+          <a class="button" target="_blank" href="https://paypal.me/pragma8123">Donate</a>
+          <a class="button" target="_blank" href="https://discord.gg/QwfXED8">
+            <span class="icon is-small">
+              <i class="fab fa-discord"></i>
+            </span>
+          </a>
+          <a class="button" target="_blank" href="https://github.com/Pragma8123/three-dog">
+            <span class="icon is-small">
+              <i class="fab fa-github"></i>
+            </span>
+          </a>
         </div>
-      </footer>
+        <p class="has-text-grey-light">
+          <small>
+            Copyright ©️ 2019
+            <a target="_blank" href="mailto:pragma8123@gmail.com">Pragma</a>
+            | Overseer font by
+            <a target="_" href="http://pixelsagas.com">Pixel Sagas</a>
+          </small>
+        </p>
+      </div>
     </div>
   </section>
 </template>

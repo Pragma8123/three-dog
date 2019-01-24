@@ -1,6 +1,11 @@
 @font-face {
   font-family: Overseer;
-  src: url(fonts/Overseer.otf);
+  src: url('fonts/Overseer.eot');
+  src: url('fonts/Overseer.eot?#iefix') format('embedded-opentype'),
+  url('fonts/Overseer.woff2') format('woff2'),
+  url('fonts/Overseer.woff') format('woff'),
+  url('fonts/Overseer.ttf') format('truetype'),
+  url('fonts/Overseer.svg') format('svg');
 }
 
 $green: #1aff80; // Fallout 3 UI green

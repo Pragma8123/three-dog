@@ -51,7 +51,7 @@
             Copyright ©️ 2019
             <a target="_blank" href="mailto:pragma8123@gmail.com">Pragma</a>
             | Overseer font by
-            <a target="_" href="http://pixelsagas.com">Pixel Sagas</a>
+            <a target="_blank" href="http://pixelsagas.com">Pixel Sagas</a>
           </small>
         </p>
       </div>

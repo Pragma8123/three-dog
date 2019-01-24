@@ -22,6 +22,7 @@
   "dependencies": {
     "@vue/component-compiler-utils": "^2.5.0",
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "bufferutil": "^4.0.1",
     "bulma": "^0.7.2",
     "dotenv": "^6.2.0",

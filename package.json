@@ -8,7 +8,6 @@
     "dev": "cross-env NODE_ENV=development node index.js",
     "lint": "eslint --ext .js,.vue src test",
     "lint-autofix": "eslint --ext .js,.vue src test --fix",
-    "migrate": "knex migrate:latest",
     "start": "node index.js",
     "test": "echo \"Write some tests!\""
   },
@@ -31,13 +30,10 @@
     "erlpack": "github:abalabahaha/erlpack",
     "eventemitter3": "^3.1.0",
     "express": "^4.16.4",
-    "knex": "^0.16.3",
-    "moment": "^2.23.0",
     "node-opus": "^0.3.1",
     "node-sass": "^4.11.0",
     "pako": "^1.0.7",
     "parcel-bundler": "^1.11.0",
-    "pg": "^7.8.0",
     "sass": "^1.16.0",
     "sodium-native": "^2.2.4",
     "uws": "^99.0.0",
@@ -52,7 +48,6 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.1",
     "prettier": "^1.15.3",
-    "rimraf": "^2.6.3",
-    "sqlite3": "^4.0.6"
+    "rimraf": "^2.6.3"
   }
 }

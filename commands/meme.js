@@ -1,6 +1,5 @@
 require('dotenv').config();
 const axios = require('axios');
-const db = require('../knex');
 
 const subs = ['falloutmemes', 'FalloutHumor', 'NewVegasMemes'];
 
@@ -38,17 +37,6 @@ module.exports = async (bot, msg) => {
           }`,
         },
       },
-    });
-  } catch (err) {
-    console.log(err);
-  }
-
-  try {
-    await db('command_log').insert({
-      guild_id: msg.channel.guild.id,
-      user_id: msg.author.id,
-      channel_id: msg.channel.id,
-      command: 'meme',
     });
   } catch (err) {
     console.log(err);

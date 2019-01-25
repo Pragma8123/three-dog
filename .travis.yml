@@ -1,11 +1,6 @@
 language: node_js
 node_js:
 - node
-services:
-  - postgresql
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - knex migrate:latest
 cache:
   directories:
   - node_modules

@@ -3,7 +3,6 @@ const Bundler = require('parcel-bundler');
 const path = require('path');
 const Eris = require('eris');
 const app = require('express')();
-const db = require('./knex');
 
 // Load commands
 const { help, meme, tuneIn, tuneOut } = require('./commands');
@@ -33,17 +32,6 @@ bot.on('messageCreate', async msg => {
   if (msg.author.bot) return; // Ignore bots
   if (!msg.content.toLowerCase().startsWith(process.env.CMD_PREFIX)) return; // Ignore regular chat
 
-  try {
-    await db('users').insert({
-      id: msg.author.id,
-      guild_id: msg.channel.guild.id,
-      username: msg.author.username,
-    });
-  } catch (err) {
-    // Ignore unique constraint errors
-    if (err.errno !== 19) console.log(err);
-  }
-
   // Cleanup user input
   const command = msg.content
     .slice(process.env.CMD_PREFIX.length)
@@ -69,34 +57,6 @@ bot.on('messageCreate', async msg => {
       break;
     }
   }
-});
-
-bot.on('guildAvailable', async guild => {
-  try {
-    await db('guilds').insert({
-      id: guild.id,
-      name: guild.name,
-      member_count: guild.memberCount,
-      region: guild.region,
-      created_at: guild.createdAt,
-      joined_at: guild.joinedAt,
-    });
-  } catch (err) {
-    // Ignore unique constraint errors
-    if (err.errno !== 19) console.log(err);
-  }
-});
-
-bot.on('guildUpdate', async guild => {
-  await db('guilds')
-    .where({ id: guild.id })
-    .update({
-      name: guild.name,
-      member_count: guild.memberCount,
-      region: guild.region,
-      created_at: guild.createdAt,
-      joined_at: guild.joinedAt,
-    });
 });
 
 // Start bot

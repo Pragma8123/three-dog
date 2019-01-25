@@ -1,5 +1,4 @@
 require('dotenv').config(); // Load env variables from .env
-const db = require('../knex');
 
 module.exports = async (bot, msg) => {
   const cmdPrefix = process.env.CMD_PREFIX;
@@ -36,15 +35,4 @@ module.exports = async (bot, msg) => {
       ],
     },
   });
-
-  try {
-    await db('command_log').insert({
-      guild_id: msg.channel.guild.id,
-      user_id: msg.author.id,
-      channel_id: msg.channel.id,
-      command: 'help',
-    });
-  } catch (err) {
-    console.log(err);
-  }
 };

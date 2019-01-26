@@ -3,6 +3,7 @@ const Bundler = require('parcel-bundler');
 const { join } = require('path');
 const Eris = require('eris');
 const app = require('express')();
+const compression = require('compression');
 const dbl = require('./dbl');
 const api = require('./api');
 const { onReady, onMessageCreate } = require('./handlers');
@@ -18,6 +19,7 @@ bot.connect();
 // Register bot with express so we can access it in API
 app.set('bot', bot);
 app.use('/api', api);
+app.use(compression());
 
 // Parcel bundler middleware
 const bundler = new Bundler(join(__dirname, 'index.html'));

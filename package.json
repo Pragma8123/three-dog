@@ -19,9 +19,9 @@
   "author": "Max M <pragma8123@gmail.com>",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
     "@vue/component-compiler-utils": "^2.5.0",
     "axios": "^0.18.0",
-    "babel-polyfill": "^6.26.0",
     "bufferutil": "^4.0.1",
     "bulma": "^0.7.2",
     "compression": "^1.7.3",

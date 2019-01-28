@@ -1,6 +1,7 @@
 require('dotenv').config(); // Load env variables from .env
 const Bundler = require('parcel-bundler');
 const { join } = require('path');
+const fs = require('fs');
 const Eris = require('eris');
 const app = require('express')();
 const compression = require('compression');
@@ -23,6 +24,13 @@ app.use(compression());
 
 // Parcel bundler middleware
 const bundler = new Bundler(join(__dirname, 'index.html'));
+bundler.on('buildEnd', () => {
+  // Copy threedog.png for Open Graph metadata
+  fs.copyFileSync(
+    join(__dirname, 'src/threedog.png'),
+    join(__dirname, 'dist/threedog.png')
+  );
+});
 app.use(bundler.middleware());
 
 const port = process.env.PORT || 8080;

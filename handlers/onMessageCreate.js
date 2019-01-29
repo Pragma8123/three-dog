@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { help, meme, tuneIn, tuneOut } = require('../commands');
+const logger = require('../logger');
 
 module.exports = (bot, msg) => {
   if (msg.author.bot) return; // Ignore bots
@@ -10,6 +11,13 @@ module.exports = (bot, msg) => {
     .slice(process.env.CMD_PREFIX.length)
     .toLowerCase()
     .trim();
+
+  logger.verbose('Command received', {
+    messageId: msg.id,
+    userId: msg.author.id,
+    channelId: msg.channel.id,
+    command,
+  });
 
   // Process command
   switch (command) {

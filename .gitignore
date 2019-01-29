@@ -4,4 +4,4 @@
 
 .env
 *.exe
-*.sqlite
+*.log

@@ -8,6 +8,7 @@ const compression = require('compression');
 const dbl = require('./dbl');
 const api = require('./api');
 const { onReady, onMessageCreate } = require('./handlers');
+const logger = require('./logger');
 
 const bot = new Eris(process.env.BOT_TOKEN);
 bot.dbl = dbl(bot, process.env.DBL_TOKEN); // Discord Bot List API
@@ -35,5 +36,5 @@ app.use(bundler.middleware());
 
 const port = process.env.PORT || 8080;
 app.listen(port, err => {
-  if (err) console.error(err);
+  if (err) logger.error('Express error', err);
 });

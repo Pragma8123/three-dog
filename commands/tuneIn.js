@@ -1,4 +1,5 @@
 require('dotenv').config(); // Load env variables from .env
+const logger = require('../logger');
 
 module.exports = async (bot, msg) => {
   // Make sure message is not a DM
@@ -26,8 +27,8 @@ module.exports = async (bot, msg) => {
   } catch (err) {
     bot.createMessage(
       msg.channel.id,
-      'There was an error joining your voice channel!'
+      'There was an error joining your voice channel! Make sure I have permission to join.'
     );
-    console.log(err);
+    logger.error('Voice channel error', err);
   }
 };

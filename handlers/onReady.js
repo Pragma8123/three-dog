@@ -1,9 +1,10 @@
 require('dotenv').config();
 const { join } = require('path');
+const logger = require('../logger');
 
 module.exports = (bot, err) => {
   if (err) {
-    console.log(err);
+    logger.error('Eris error', err);
   } else {
     // Set bot status as help text
     bot.editStatus('online', {

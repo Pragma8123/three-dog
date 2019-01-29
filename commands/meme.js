@@ -1,5 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
+const logger = require('../logger');
 
 const subs = ['falloutmemes', 'FalloutHumor', 'NewVegasMemes'];
 
@@ -39,6 +40,6 @@ module.exports = async (bot, msg) => {
       },
     });
   } catch (err) {
-    console.log(err);
+    logger.error('Meme error', err);
   }
 };

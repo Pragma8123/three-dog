@@ -2,7 +2,8 @@ require('dotenv').config();
 const axios = require('axios');
 const logger = require('../logger');
 
-const subs = ['falloutmemes', 'FalloutHumor', 'NewVegasMemes'];
+const subs = ['FalloutMemes', 'FalloutHumor', 'NewVegasMemes'];
+const domains = ['i.redd.it', 'i.imgur.com'];
 
 module.exports = async (bot, msg) => {
   try {
@@ -11,12 +12,15 @@ module.exports = async (bot, msg) => {
       params: {
         sort: 'top',
         t: 'week',
-        limit: 100,
+        limit: 50,
       },
     });
     // We only want SFW image posts
     const posts = data.data.children.filter(
-      post => post.data.is_reddit_media_domain && !post.data.over_18
+      post =>
+        !post.data.is_video &&
+        domains.includes(post.data.domain) &&
+        !post.data.over_18
     );
 
     // Select random post
@@ -25,17 +29,21 @@ module.exports = async (bot, msg) => {
     const title =
       post.title.length > 256 ? `${post.title.slice(0, 253)}...` : post.title;
 
+    const flair = post.link_flair_text
+      ? `\`${post.link_flair_text}\``
+      : undefined;
+
     bot.createMessage(msg.channel.id, {
       embed: {
         title: title,
-        description: post.selftext,
+        description: flair,
         url: `https://reddit.com${post.permalink}`,
         image: { url: post.url },
         color: 0x1aff80, // Fallout 3 UI green
         footer: {
           text: `👍 ${post.ups} | 💬 ${post.num_comments} | ${
             post.subreddit_name_prefixed
-          }`,
+          } | u/${post.author}`,
         },
       },
     });

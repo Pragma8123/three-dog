@@ -6,7 +6,7 @@ module.exports = (bot, token) => {
 
   // Register event handlers
   dbl.on('posted', () => logger.verbose('DBL: Server count posted'));
-  dbl.on('error', err => logger.error('DBL Error', err));
+  dbl.on('error', err => logger.error(null, err));
 
   return dbl;
 };

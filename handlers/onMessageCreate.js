@@ -12,7 +12,7 @@ module.exports = (bot, msg) => {
     .toLowerCase()
     .trim();
 
-  logger.verbose('Command received', {
+  logger.verbose('Command Processed', {
     messageId: msg.id,
     userId: msg.author.id,
     channelId: msg.channel.id,

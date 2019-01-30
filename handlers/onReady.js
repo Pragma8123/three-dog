@@ -4,7 +4,7 @@ const logger = require('../logger');
 
 module.exports = (bot, err) => {
   if (err) {
-    logger.error('Eris error', err);
+    logger.error(err);
   } else {
     // Set bot status as help text
     bot.editStatus('online', {

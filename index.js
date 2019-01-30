@@ -36,5 +36,5 @@ app.use(bundler.middleware());
 
 const port = process.env.PORT || 8080;
 app.listen(port, err => {
-  if (err) logger.error('Express error', err);
+  if (err) logger.error(null, err);
 });

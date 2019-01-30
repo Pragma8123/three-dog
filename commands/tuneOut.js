@@ -9,9 +9,9 @@ module.exports = async (bot, msg) => {
   if (connection) {
     try {
       bot.sharedStream.remove(connection);
-      bot.leaveVoiceChannel(connection.channelID);
+      await bot.leaveVoiceChannel(connection.channelID);
     } catch (err) {
-      logger.error('Voice channel error', err);
+      logger.error(null, err);
     }
   }
 };

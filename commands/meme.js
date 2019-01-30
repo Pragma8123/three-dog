@@ -6,34 +6,51 @@ const subs = ['FalloutMemes', 'FalloutHumor', 'NewVegasMemes'];
 const domains = ['i.redd.it', 'i.imgur.com'];
 
 module.exports = async (bot, msg) => {
+  const sub = subs[Math.floor(Math.random() * subs.length)];
+
+  let data;
   try {
-    const sub = subs[Math.floor(Math.random() * subs.length)];
-    const { data } = await axios.get(`https://reddit.com/r/${sub}.json`, {
+    const res = await axios.get(`https://reddit.com/r/${sub}.json`, {
       params: {
         sort: 'top',
         t: 'week',
         limit: 50,
       },
     });
-    // We only want SFW image posts
-    const posts = data.data.children.filter(
-      post =>
-        !post.data.is_video &&
-        domains.includes(post.data.domain) &&
-        !post.data.over_18
-    );
+    data = res.data.data;
+  } catch (err) {
+    logger.error(null, err);
+    try {
+      await bot.createMessage(
+        msg.channel.id,
+        'There was an error fetching the memes 😰'
+      );
+    } catch (err) {
+      logger.error(null, err);
+    }
+    return;
+  }
 
-    // Select random post
-    const post = posts[Math.floor(Math.random() * posts.length)].data;
+  // We only want SFW image posts
+  const posts = data.children.filter(
+    post =>
+      !post.data.is_video &&
+      domains.includes(post.data.domain) &&
+      !post.data.over_18
+  );
 
-    const title =
-      post.title.length > 256 ? `${post.title.slice(0, 253)}...` : post.title;
+  // Select random post
+  const post = posts[Math.floor(Math.random() * posts.length)].data;
 
-    const flair = post.link_flair_text
-      ? `\`${post.link_flair_text}\``
-      : undefined;
+  const title =
+    post.title.length > 256 ? `${post.title.slice(0, 253)}...` : post.title;
 
-    bot.createMessage(msg.channel.id, {
+  const flair = post.link_flair_text
+    ? `\`${post.link_flair_text}\``
+    : undefined;
+
+  try {
+    await bot.createMessage(msg.channel.id, {
       embed: {
         title: title,
         description: flair,
@@ -48,6 +65,6 @@ module.exports = async (bot, msg) => {
       },
     });
   } catch (err) {
-    logger.error('Meme error', err);
+    logger.error(null, err);
   }
 };

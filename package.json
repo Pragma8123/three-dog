@@ -12,7 +12,7 @@
     "ffmpeg": "ffbinaries",
     "lint": "eslint --ext .js commands dbl handlers logger tests",
     "lint-autofix": "eslint --ext .js commands dbl handlers logger tests --fix",
-    "start": "npm run ffmpeg && node index.js",
+    "start": "node index.js",
     "test": "echo \"Write some tests!\""
   },
   "repository": {

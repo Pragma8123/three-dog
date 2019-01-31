@@ -3,6 +3,10 @@
   "version": "0.2.0",
   "description": "A Fallout themed Discord radio bot",
   "main": "index.js",
+  "engines": {
+    "node": ">=10.15.1",
+    "npm": ">=6.7.0"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development node index.js",
     "ffmpeg": "ffbinaries",

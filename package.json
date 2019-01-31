@@ -9,7 +9,6 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development node index.js",
-    "ffmpeg": "ffbinaries",
     "lint": "eslint --ext .js commands dbl handlers logger tests",
     "lint-autofix": "eslint --ext .js commands dbl handlers logger tests --fix",
     "start": "node index.js",
@@ -30,7 +29,6 @@
     "eris": "^0.9.0",
     "erlpack": "github:abalabahaha/erlpack",
     "eventemitter3": "^3.1.0",
-    "ffbinaries": "^1.1.1",
     "node-opus": "^0.3.1",
     "pako": "^1.0.8",
     "sodium-native": "^2.2.5",

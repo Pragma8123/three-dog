@@ -12,10 +12,10 @@ module.exports = (bot, err) => {
       type: 2, // Listening
     });
     // Start up radio track
-    bot.sharedStream.play(join(__dirname, '../gnr_audio.ogg'));
+    bot.sharedStream.play(join(__dirname, '../gnr.ogg'));
     bot.sharedStream.on('end', () => {
       // We should restart the stream when it ends
-      bot.sharedStream.play(join(__dirname, '../gnr_audio.ogg'));
+      bot.sharedStream.play(join(__dirname, '../gnr.ogg'));
     });
   }
 };

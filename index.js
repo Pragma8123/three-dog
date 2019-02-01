@@ -2,9 +2,11 @@ require('dotenv').config(); // Load env variables from .env
 const Eris = require('eris');
 const dbl = require('./dbl');
 const { onReady, onMessageCreate } = require('./handlers');
-const logger = require('./logger');
 
-const bot = new Eris(process.env.BOT_TOKEN);
+const bot = new Eris(process.env.BOT_TOKEN, {
+  compress: true,
+  opusOnly: true,
+});
 bot.dbl = dbl(bot, process.env.DBL_TOKEN); // Discord Bot List API
 bot.sharedStream = new Eris.SharedStream();
 

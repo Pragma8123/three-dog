@@ -11,6 +11,3 @@ deploy:
   script: bash deploy.sh
   on:
     branch: master
-before_install:
-- openssl aes-256-cbc -K $encrypted_b7ccb24178b3_key -iv $encrypted_b7ccb24178b3_iv
-  -in deploy.key.enc -out deploy.key -d

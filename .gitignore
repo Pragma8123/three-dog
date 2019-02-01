@@ -1,9 +1,7 @@
 /node_modules
-/.cache
-/dist
 
 .env
 *.exe
 *.log
-.travis/*.key
-.travis/*.key.pub
+*.key
+*.key.pub

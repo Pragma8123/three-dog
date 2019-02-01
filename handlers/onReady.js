@@ -8,7 +8,7 @@ module.exports = (bot, err) => {
   } else {
     // Set bot status as help text
     bot.editStatus('online', {
-      name: process.env.CMD_PREFIX,
+      name: `${process.env.CMD_PREFIX} help`,
       type: 2, // Listening
     });
     // Start up radio track

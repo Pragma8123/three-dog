@@ -6,11 +6,6 @@ module.exports = async (bot, msg) => {
   try {
     await bot.createMessage(msg.channel.id, {
       embed: {
-        title: 'Commands',
-        author: {
-          name: bot.user.username,
-          icon_url: bot.user.avatarURL,
-        },
         color: 0x1aff80, // Fallout 3 UI green
         fields: [
           {

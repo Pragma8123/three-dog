@@ -4,9 +4,6 @@ node_js:
 cache:
   directories:
   - node_modules
-before_install:
-- openssl aes-256-cbc -K $encrypted_fceaa16ce1a1_key -iv $encrypted_fceaa16ce1a1_iv
-  -in deploy.key.enc -out deploy.key -d
 script:
 - npm test
 deploy:
@@ -14,3 +11,6 @@ deploy:
   script: bash scripts/deploy.sh
   on:
     branch: master
+before_install:
+- openssl aes-256-cbc -K $encrypted_fceaa16ce1a1_key -iv $encrypted_fceaa16ce1a1_iv
+  -in deploy.key.enc -out deploy.key -d

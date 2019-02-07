@@ -32,17 +32,17 @@
     "eventemitter3": "^3.1.0",
     "node-opus": "^0.3.1",
     "pako": "^1.0.8",
-    "sodium-native": "^2.2.5",
+    "sodium-native": "^2.2.6",
     "uws": "^99.0.0",
-    "winston": "^3.2.0",
+    "winston": "^3.2.1",
     "zlib-sync": "^0.1.4"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "eslint": "^5.12.1",
+    "eslint": "^5.13.0",
     "eslint-config-prettier": "^3.6.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.1",
+    "prettier": "^1.16.4",
     "rimraf": "^2.6.3"
   }
 }

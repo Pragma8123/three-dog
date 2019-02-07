@@ -4,10 +4,25 @@ const logger = require('../logger');
 
 const subs = ['FalloutMemes', 'FalloutHumor', 'NewVegasMemes'];
 const domains = ['i.redd.it', 'i.imgur.com'];
+const cooldownTime = 3000; // 3 seconds
+const cooldowns = new Set();
 
 module.exports = async (bot, msg) => {
-  const sub = subs[Math.floor(Math.random() * subs.length)];
+  // Check if user has cooldown
+  if (hasCD(msg.author.id)) {
+    try {
+      await bot.createMessage(
+        msg.channel.id,
+        `${msg.author.mention} You must wait ${cooldownTime /
+          1000} seconds before using this command again.`
+      );
+    } catch (err) {
+      logger.error(null, err);
+    }
+    return;
+  } else addCD(msg.author.id);
 
+  const sub = subs[Math.floor(Math.random() * subs.length)];
   let data;
   try {
     const res = await axios.get(`https://reddit.com/r/${sub}.json`, {
@@ -68,3 +83,13 @@ module.exports = async (bot, msg) => {
     logger.error(null, err);
   }
 };
+
+function hasCD(userId) {
+  return cooldowns.has(userId);
+}
+
+function addCD(userId) {
+  if (hasCD(userId)) return;
+  cooldowns.add(userId);
+  setTimeout(() => cooldowns.delete(userId), cooldownTime);
+}

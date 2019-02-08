@@ -13,8 +13,6 @@ module.exports = (bot, msg) => {
     .split(/\s+/g)[0]
     .toLowerCase();
 
-  console.log(`Command: ${command}`);
-
   logger.verbose('Command Processed', {
     messageId: msg.id,
     userId: msg.author.id,

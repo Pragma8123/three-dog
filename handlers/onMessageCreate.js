@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { help, meme, tuneIn, tuneOut } = require('../commands');
+const { help, evalCmd, meme, tuneIn, tuneOut } = require('../commands');
 const logger = require('../logger');
 
 module.exports = (bot, msg) => {
@@ -9,8 +9,11 @@ module.exports = (bot, msg) => {
   // Cleanup user input
   const command = msg.content
     .slice(process.env.CMD_PREFIX.length)
-    .toLowerCase()
-    .trim();
+    .trim()
+    .split(/\s+/g)[0]
+    .toLowerCase();
+
+  console.log(`Command: ${command}`);
 
   logger.verbose('Command Processed', {
     messageId: msg.id,
@@ -31,6 +34,10 @@ module.exports = (bot, msg) => {
     }
     case 'tuneout': {
       tuneOut(bot, msg);
+      break;
+    }
+    case 'eval': {
+      evalCmd(bot, msg);
       break;
     }
     default: {

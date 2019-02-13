@@ -1,8 +1,8 @@
 require('dotenv').config();
-const { help, evalCmd, meme, tuneIn, tuneOut } = require('../commands');
+const { help, vote, evalCmd, meme, tuneIn, tuneOut } = require('../commands');
 const logger = require('../logger');
 
-module.exports = (bot, msg) => {
+module.exports = async (bot, msg) => {
   if (msg.author.bot) return; // Ignore bots
   if (!msg.content.toLowerCase().startsWith(process.env.CMD_PREFIX)) return; // Ignore regular chat
 
@@ -21,26 +21,34 @@ module.exports = (bot, msg) => {
   });
 
   // Process command
-  switch (command) {
-    case 'meme': {
-      meme(bot, msg);
-      break;
+  try {
+    switch (command) {
+      case 'meme': {
+        await meme(bot, msg);
+        break;
+      }
+      case 'tunein': {
+        await tuneIn(bot, msg);
+        break;
+      }
+      case 'tuneout': {
+        await tuneOut(bot, msg);
+        break;
+      }
+      case 'eval': {
+        await evalCmd(bot, msg);
+        break;
+      }
+      case 'vote': {
+        await vote(bot, msg);
+        break;
+      }
+      default: {
+        await help(bot, msg);
+        break;
+      }
     }
-    case 'tunein': {
-      tuneIn(bot, msg);
-      break;
-    }
-    case 'tuneout': {
-      tuneOut(bot, msg);
-      break;
-    }
-    case 'eval': {
-      evalCmd(bot, msg);
-      break;
-    }
-    default: {
-      help(bot, msg);
-      break;
-    }
+  } catch (err) {
+    logger.error(null, err);
   }
 };

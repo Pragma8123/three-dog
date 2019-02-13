@@ -1,5 +1,4 @@
 require('dotenv').config();
-const logger = require('../logger');
 
 module.exports = async (bot, msg) => {
   if (msg.author.id !== process.env.ADMIN_ID) return;
@@ -10,7 +9,6 @@ module.exports = async (bot, msg) => {
   try {
     await bot.createMessage(msg.channel.id, JSON.stringify(eval(js)));
   } catch (err) {
-    logger.error(null, err);
     await bot.createMessage(msg.channel.id, JSON.stringify(err));
   }
 };

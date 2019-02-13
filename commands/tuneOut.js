@@ -1,5 +1,4 @@
 require('dotenv').config(); // Load env variables from .env
-const logger = require('../logger');
 
 module.exports = async (bot, msg) => {
   // Remove voice channel from shared stream if it exists
@@ -11,7 +10,7 @@ module.exports = async (bot, msg) => {
       bot.sharedStream.remove(connection);
       await bot.leaveVoiceChannel(connection.channelID);
     } catch (err) {
-      logger.error(null, err);
+      throw err;
     }
   }
 };

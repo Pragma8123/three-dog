@@ -1,5 +1,4 @@
 require('dotenv').config(); // Load env variables from .env
-const logger = require('../logger');
 
 module.exports = async (bot, msg) => {
   // Make sure message is not a DM
@@ -10,7 +9,7 @@ module.exports = async (bot, msg) => {
         'This command can only be run in a server.'
       );
     } catch (err) {
-      logger.error(null, err);
+      throw err;
     }
     return;
   }
@@ -23,7 +22,7 @@ module.exports = async (bot, msg) => {
         'You are not in a voice channel.'
       );
     } catch (err) {
-      logger.error(null, err);
+      throw err;
     }
     return;
   }
@@ -36,14 +35,14 @@ module.exports = async (bot, msg) => {
     if (!bot.sharedStream.voiceConnections.find(con => con === connection))
       bot.sharedStream.add(connection);
   } catch (err) {
-    logger.error(null, err);
     try {
       await bot.createMessage(
         msg.channel.id,
         'There was an error joining your voice channel! Make sure I have permission to join.'
       );
     } catch (err) {
-      logger.error(null, err);
+      throw err;
     }
+    throw err;
   }
 };

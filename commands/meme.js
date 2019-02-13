@@ -1,6 +1,5 @@
 require('dotenv').config();
 const axios = require('axios');
-const logger = require('../logger');
 
 const subs = ['FalloutMemes', 'FalloutHumor', 'NewVegasMemes'];
 const domains = ['i.redd.it', 'i.imgur.com'];
@@ -17,7 +16,7 @@ module.exports = async (bot, msg) => {
           1000} seconds before using this command again.`
       );
     } catch (err) {
-      logger.error(null, err);
+      throw err;
     }
     return;
   } else addCD(msg.author.id);
@@ -34,16 +33,15 @@ module.exports = async (bot, msg) => {
     });
     data = res.data.data;
   } catch (err) {
-    logger.error(null, err);
     try {
       await bot.createMessage(
         msg.channel.id,
         'There was an error fetching the memes 😰'
       );
     } catch (err) {
-      logger.error(null, err);
+      throw err;
     }
-    return;
+    throw err;
   }
 
   // We only want SFW image posts
@@ -80,7 +78,7 @@ module.exports = async (bot, msg) => {
       },
     });
   } catch (err) {
-    logger.error(null, err);
+    throw err;
   }
 };
 

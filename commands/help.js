@@ -1,5 +1,4 @@
 require('dotenv').config(); // Load env variables from .env
-const logger = require('../logger');
 
 module.exports = async (bot, msg) => {
   const cmdPrefix = process.env.CMD_PREFIX;
@@ -9,30 +8,28 @@ module.exports = async (bot, msg) => {
         color: 0x1aff80, // Fallout 3 UI green
         fields: [
           {
-            name: 'Tune In',
-            value: `\`${cmdPrefix} tunein\``,
-          },
-          {
-            name: 'Tune Out',
-            value: `\`${cmdPrefix} tuneout\``,
-          },
-          {
-            name: 'Fallout Meme',
-            value: `\`${cmdPrefix} meme\``,
-          },
-          {
-            name: 'Help',
-            value: `\`${cmdPrefix}\``,
+            name: 'Commands',
+            value: `
+            \`${cmdPrefix} tunein\` - Tune-in to GNR
+            \`${cmdPrefix} tuneout\`
+            \`${cmdPrefix} meme\` - Post a fresh Fallout meme
+            \`${cmdPrefix} vote\` - Vote for Three Dog on discord bot list
+            \`${cmdPrefix} help\` - This message`,
           },
           {
             name: 'Support Server',
             value:
               '*Need Help?* [**Join the support server**](https://discord.gg/QwfXED8)',
           },
+          {
+            name: 'Donate',
+            value:
+              '*If you like me around,* [**buy my creator a coffee!**](https://paypal.me/pragma8123)',
+          },
         ],
       },
     });
   } catch (err) {
-    logger.error(null, err);
+    throw err;
   }
 };

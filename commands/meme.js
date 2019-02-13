@@ -1,10 +1,31 @@
 require('dotenv').config();
 const axios = require('axios');
+const logger = require('../logger');
 
 const subs = ['FalloutMemes', 'FalloutHumor', 'NewVegasMemes'];
 const domains = ['i.redd.it', 'i.imgur.com'];
 const cooldownTime = 3000; // 3 seconds
 const cooldowns = new Set();
+
+// Cache subreddits
+const subCache = new Map();
+const fetchSubs = () => {
+  for (let i = 0; i < subs.length; i += 1) {
+    const s = subs[i];
+    axios
+      .get(`https://reddit.com/r/${s}.json`, {
+        params: {
+          sort: 'top',
+          t: 'week',
+          limit: 50,
+        },
+      })
+      .then(res => subCache.set(s, res.data))
+      .catch(err => logger.error(null, err));
+  }
+};
+fetchSubs(); // Initial fetch
+setInterval(fetchSubs, 1000 * 60 * 5); // Every 5 min
 
 module.exports = async (bot, msg) => {
   // Check if user has cooldown
@@ -22,27 +43,7 @@ module.exports = async (bot, msg) => {
   } else addCD(msg.author.id);
 
   const sub = subs[Math.floor(Math.random() * subs.length)];
-  let data;
-  try {
-    const res = await axios.get(`https://reddit.com/r/${sub}.json`, {
-      params: {
-        sort: 'top',
-        t: 'week',
-        limit: 50,
-      },
-    });
-    data = res.data.data;
-  } catch (err) {
-    try {
-      await bot.createMessage(
-        msg.channel.id,
-        'There was an error fetching the memes 😰'
-      );
-    } catch (err) {
-      throw err;
-    }
-    throw err;
-  }
+  const { data } = subCache.get(sub);
 
   // We only want SFW image posts
   const posts = data.children.filter(

@@ -2,7 +2,7 @@ require('dotenv').config();
 const { help, vote, evalCmd, meme, tuneIn, tuneOut } = require('../commands');
 const logger = require('../logger');
 
-module.exports = async (bot, msg) => {
+module.exports = async (ctx, msg) => {
   if (msg.author.bot) return; // Ignore bots
   if (!msg.content.toLowerCase().startsWith(process.env.CMD_PREFIX)) return; // Ignore regular chat
 
@@ -24,27 +24,27 @@ module.exports = async (bot, msg) => {
   try {
     switch (command) {
       case 'meme': {
-        await meme(bot, msg);
+        await meme(ctx, msg);
         break;
       }
       case 'tunein': {
-        await tuneIn(bot, msg);
+        await tuneIn(ctx, msg);
         break;
       }
       case 'tuneout': {
-        await tuneOut(bot, msg);
+        await tuneOut(ctx, msg);
         break;
       }
       case 'eval': {
-        await evalCmd(bot, msg);
+        await evalCmd(ctx, msg);
         break;
       }
       case 'vote': {
-        await vote(bot, msg);
+        await vote(ctx, msg);
         break;
       }
       default: {
-        await help(bot, msg);
+        await help(ctx, msg);
         break;
       }
     }

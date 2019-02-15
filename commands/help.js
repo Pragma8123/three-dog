@@ -1,6 +1,7 @@
 require('dotenv').config(); // Load env variables from .env
 
-module.exports = async (bot, msg) => {
+module.exports = async (ctx, msg) => {
+  const { bot } = ctx;
   const cmdPrefix = process.env.CMD_PREFIX;
   try {
     await bot.createMessage(msg.channel.id, {

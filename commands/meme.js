@@ -27,7 +27,8 @@ const fetchSubs = () => {
 fetchSubs(); // Initial fetch
 setInterval(fetchSubs, 1000 * 60 * 5); // Every 5 min
 
-module.exports = async (bot, msg) => {
+module.exports = async (ctx, msg) => {
+  const { bot } = ctx;
   // Check if user has cooldown
   if (hasCD(msg.author.id)) {
     try {

@@ -1,4 +1,5 @@
-module.exports = async (bot, msg) => {
+module.exports = async (ctx, msg) => {
+  const { bot } = ctx;
   try {
     await bot.createMessage(
       msg.channel.id,

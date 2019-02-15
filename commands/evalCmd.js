@@ -1,6 +1,7 @@
 require('dotenv').config();
 
-module.exports = async (bot, msg) => {
+module.exports = async (ctx, msg) => {
+  const { bot } = ctx;
   if (msg.author.id !== process.env.ADMIN_ID) return;
   const js = msg.content
     .slice(process.env.CMD_PREFIX.length)

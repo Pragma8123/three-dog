@@ -1,6 +1,7 @@
 require('dotenv').config(); // Load env variables from .env
 
-module.exports = async (bot, msg) => {
+module.exports = async (ctx, msg) => {
+  const { bot } = ctx;
   // Make sure message is not a DM
   if (!msg.channel.guild) {
     try {
@@ -32,8 +33,8 @@ module.exports = async (bot, msg) => {
     const connection = await bot.joinVoiceChannel(
       msg.member.voiceState.channelID
     );
-    if (!bot.sharedStream.voiceConnections.find(con => con === connection))
-      bot.sharedStream.add(connection);
+    if (!ctx.sharedStream.voiceConnections.find(con => con === connection))
+      ctx.sharedStream.add(connection);
   } catch (err) {
     try {
       await bot.createMessage(

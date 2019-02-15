@@ -10,7 +10,6 @@ const master = new Sharder(process.env.BOT_TOKEN, '/ThreeDog.js', {
   debug: process.env.NODE_ENV !== 'production',
   clientOptions: { compress: true, opusOnly: true, messageLimit: 0 },
   guildsPerShard: process.env.GUILDS_PER_SHARD || 1500,
-  // shards: 3,
 });
 
 master.on('stats', async stats => {

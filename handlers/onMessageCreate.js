@@ -43,7 +43,7 @@ module.exports = async (ctx, msg) => {
         await vote(ctx, msg);
         break;
       }
-      default: {
+      case 'help': {
         await help(ctx, msg);
         break;
       }

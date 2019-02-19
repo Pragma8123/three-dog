@@ -4,7 +4,7 @@ const logger = require('../logger');
 
 const subs = ['FalloutMemes', 'FalloutHumor', 'NewVegasMemes'];
 const domains = ['i.redd.it', 'i.imgur.com'];
-const cooldownTime = 3000; // 3 seconds
+const cooldownTime = 2500; // 2.5 seconds
 const cooldowns = new Set();
 
 // Cache subreddits
@@ -15,8 +15,7 @@ const fetchSubs = () => {
     axios
       .get(`https://reddit.com/r/${s}.json`, {
         params: {
-          sort: 'top',
-          t: 'week',
+          sort: 'hot',
           limit: 50,
         },
       })
@@ -51,7 +50,8 @@ module.exports = async (ctx, msg) => {
     post =>
       !post.data.is_video &&
       domains.includes(post.data.domain) &&
-      !post.data.over_18
+      !post.data.over_18 &&
+      post.data.score >= 50
   );
 
   // Select random post

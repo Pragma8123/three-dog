@@ -2,7 +2,9 @@ require('dotenv').config();
 const { Master: Sharder } = require('eris-sharder');
 const DBL = require('dblapi.js');
 const DDBL = require('ddblapi.js');
-const r = require('rethinkdbdash')();
+const r = require('rethinkdbdash')({
+  host: process.env.RETHINKDB_URL ? 'dokku-rethinkdb-main' : 'localhost',
+});
 const logger = require('./logger');
 
 const master = new Sharder(process.env.BOT_TOKEN, '/ThreeDog.js', {

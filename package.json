@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development node index.js",
+    "init-db": "node scripts/initDB",
     "lint": "eslint --ext .js commands dbl handlers logger tests",
     "lint-autofix": "eslint --ext .js commands dbl handlers logger tests --fix",
     "start": "node index.js",
@@ -33,6 +34,7 @@
     "eventemitter3": "^3.1.0",
     "node-opus": "^0.3.1",
     "pako": "^1.0.8",
+    "rethinkdbdash": "^2.3.31",
     "sodium-native": "^2.3.0",
     "uws": "^99.0.0",
     "winston": "^3.2.1",

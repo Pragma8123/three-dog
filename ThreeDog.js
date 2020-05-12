@@ -2,6 +2,7 @@ require('dotenv').config();
 const { join } = require('path');
 const { Base } = require('eris-sharder');
 const { SharedStream } = require('eris');
+const DBL = require('dblapi.js');
 const { onError, onWarn, onMessageCreate } = require('./handlers');
 
 class ThreeDog extends Base {
@@ -29,6 +30,9 @@ class ThreeDog extends Base {
       // We should restart the track when it ends
       this.sharedStream.play(join(__dirname, 'gnr.ogg'));
     });
+
+    // Discord Bot List stats hook
+    this.bot.dbl = new DBL(process.env.DBL_TOKEN, this.bot);
   }
 }
 

@@ -73,9 +73,7 @@ module.exports = async (ctx, msg) => {
         image: { url: post.url },
         color: 0x1aff80, // Fallout 3 UI green
         footer: {
-          text: `👍 ${post.ups} | 💬 ${post.num_comments} | ${
-            post.subreddit_name_prefixed
-          } | u/${post.author}`,
+          text: `👍 ${post.ups} | 💬 ${post.num_comments} | ${post.subreddit_name_prefixed} | u/${post.author}`,
         },
       },
     });

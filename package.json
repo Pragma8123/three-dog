@@ -29,6 +29,7 @@
     "dblapi.js": "^2.4.0",
     "dotenv": "^6.2.0",
     "eris": "^0.13.3",
+    "eris-additions": "^1.4.1",
     "eris-sharder": "^1.10.0",
     "erlpack": "github:abalabahaha/erlpack",
     "eventemitter3": "^3.1.2",

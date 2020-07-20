@@ -33,6 +33,11 @@ module.exports = async (ctx, msg) => {
     const connection = await bot.joinVoiceChannel(
       msg.member.voiceState.channelID
     );
+
+    // Deafen self if successful
+    connection.updateVoiceState(false, true);
+
+    // Add voice connection to shared radio stream
     if (!ctx.sharedStream.voiceConnections.find(con => con === connection))
       ctx.sharedStream.add(connection);
   } catch (err) {

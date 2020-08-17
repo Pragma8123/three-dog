@@ -1,14 +1,11 @@
-FROM node
+FROM node:latest
 
 RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "ffmpeg", "build-essential", "automake"]
 
 WORKDIR /usr/src/app
-COPY package.json .
-COPY package-lock.json .
-RUN npm install
-RUN npm audit fix
 COPY . .
+RUN npm i
 
 ENV NAME CMD_PREFIX
 ENV NAME BOT_TOKEN

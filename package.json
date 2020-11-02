@@ -23,9 +23,9 @@
   "author": "Max M <pragma8123@gmail.com>",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
+    "@discordjs/opus": "^0.3.3",
     "axios": "^0.18.1",
-    "bufferutil": "^4.0.1",
+    "bufferutil": "^4.0.2",
     "dblapi.js": "^2.4.1",
     "dotenv": "^6.2.0",
     "eris": "^0.13.3",

@@ -28,7 +28,7 @@
     "bufferutil": "^4.0.2",
     "dblapi.js": "^2.4.1",
     "dotenv": "^6.2.0",
-    "eris": "^0.13.3",
+    "eris": "^0.13.4",
     "eris-additions": "^1.4.1",
     "eris-sharder": "^1.10.0",
     "erlpack": "github:abalabahaha/erlpack",
@@ -41,7 +41,7 @@
     "cross-env": "^5.2.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^3.6.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "^3.3.0",
     "prettier": "^1.19.1",
     "rimraf": "^2.7.1"
   }

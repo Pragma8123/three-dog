@@ -24,7 +24,7 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "bufferutil": "^4.0.1",
     "dblapi.js": "^2.4.0",
     "dotenv": "^6.2.0",

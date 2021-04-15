@@ -24,7 +24,7 @@
     "bufferutil": "^4.0.3",
     "dblapi.js": "^2.4.1",
     "dotenv": "^6.2.0",
-    "eris": "^0.13.4",
+    "eris": "^0.15.0",
     "eris-additions": "^1.4.1",
     "eris-sharder": "^1.10.0",
     "erlpack": "github:abalabahaha/erlpack",

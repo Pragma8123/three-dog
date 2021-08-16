@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:lts
 
 RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "ffmpeg", "build-essential", "automake"]

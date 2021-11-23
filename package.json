@@ -1,6 +1,6 @@
 {
   "name": "three-dog-bot",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A Fallout themed Discord radio bot",
   "main": "index.js",
   "scripts": {

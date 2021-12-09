@@ -1,14 +1,14 @@
 require('dotenv').config();
 const { join } = require('path');
-const { Base } = require('eris-sharder');
-const { SharedStream } = require('eris');
-const DBL = require('dblapi.js');
+const Eris = require('eris');
+const { AutoPoster } = require('topgg-autoposter');
 const { onError, onWarn, onMessageCreate } = require('./handlers');
+const logger = require('./logger');
 
-class ThreeDog extends Base {
-  constructor(bot) {
-    super(bot);
-    this.sharedStream = new SharedStream();
+class ThreeDog {
+  constructor(token) {
+    this.bot = new Eris(token);
+    this.sharedStream = new Eris.SharedStream();
   }
 
   launch() {
@@ -31,8 +31,17 @@ class ThreeDog extends Base {
       this.sharedStream.play(join(__dirname, 'gnr.ogg'));
     });
 
-    // Discord Bot List stats hook
-    this.bot.dbl = new DBL(process.env.DBL_TOKEN, this.bot);
+    // Actually connect to discord services
+    this.bot.connect();
+
+    // Top.gg stats hook
+    if (process.env.NODE_ENV == 'production') {
+      const ap = AutoPoster(process.env.TGG_TOKEN, this.bot);
+
+      ap.on('posted', (stats) => {
+        logger.info(`Posted stats to Top.gg | ${stats.serverCount} servers!`);
+      });
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 FROM node:lts
 
 RUN ["apt-get", "update"]
-RUN ["apt-get", "install", "-y", "ffmpeg", "build-essential", "automake"]
+RUN ["apt-get", "install", "-y", "ffmpeg", "build-essential", "make", "python", "python2"]
 
 WORKDIR /usr/src/app
 COPY . .
@@ -9,8 +9,6 @@ RUN npm i
 
 ENV NAME CMD_PREFIX
 ENV NAME BOT_TOKEN
-ENV NAME DBL_TOKEN
-ENV NAME DDBL_TOKEN
-ENV NAME GUILDS_PER_SHARD
+ENV NAME TGG_TOKEN
 
 CMD ["npm", "start"]

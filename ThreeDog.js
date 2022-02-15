@@ -36,11 +36,15 @@ class ThreeDog {
 
     // Top.gg stats hook
     if (process.env.NODE_ENV == 'production') {
-      const ap = AutoPoster(process.env.TGG_TOKEN, this.bot);
+      try {
+        const ap = AutoPoster(process.env.TGG_TOKEN, this.bot);
 
-      ap.on('posted', (stats) => {
-        logger.info(`Posted stats to Top.gg | ${stats.serverCount} servers!`);
-      });
+        ap.on('posted', (stats) => {
+          logger.info(`Posted stats to Top.gg | ${stats.serverCount} servers!`);
+        });
+      } catch (error) {
+        logger.error(error.message);
+      }
     }
   }
 }

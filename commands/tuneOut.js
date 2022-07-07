@@ -4,14 +4,10 @@ module.exports = async (ctx, msg) => {
   const { bot } = ctx;
   // Remove voice channel from shared stream if it exists
   const connection = ctx.sharedStream.voiceConnections.find(
-    con => con.channelID === msg.member.voiceState.channelID
+    (con) => con.channelID === msg.member.voiceState.channelID,
   );
   if (connection) {
-    try {
-      ctx.sharedStream.remove(connection);
-      await bot.leaveVoiceChannel(connection.channelID);
-    } catch (err) {
-      throw err;
-    }
+    ctx.sharedStream.remove(connection);
+    await bot.leaveVoiceChannel(connection.channelID);
   }
 };

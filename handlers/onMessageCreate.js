@@ -1,5 +1,7 @@
 require('dotenv').config();
-const { help, vote, evalCmd, meme, tuneIn, tuneOut } = require('../commands');
+const {
+  help, vote, meme, tuneIn, tuneOut,
+} = require('../commands');
 const logger = require('../logger');
 
 module.exports = async (ctx, msg) => {
@@ -35,10 +37,6 @@ module.exports = async (ctx, msg) => {
         await tuneOut(ctx, msg);
         break;
       }
-      case 'eval': {
-        await evalCmd(ctx, msg);
-        break;
-      }
       case 'vote': {
         await vote(ctx, msg);
         break;
@@ -47,6 +45,7 @@ module.exports = async (ctx, msg) => {
         await help(ctx, msg);
         break;
       }
+      default:
     }
   } catch (err) {
     logger.error(null, err);

@@ -19,7 +19,7 @@
   "author": "Max M <pragma8123@gmail.com>",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
+    "@discordjs/opus": "^0.8.0",
     "axios": "^0.24.0",
     "bufferutil": "^4.0.6",
     "dotenv": "^10.0.0",

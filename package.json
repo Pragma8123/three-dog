@@ -1,13 +1,12 @@
 {
   "name": "three-dog-bot",
+  "private": "true",
   "version": "0.5.0",
+  "type": "module",
   "description": "A Fallout themed Discord radio bot",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node index.js",
-    "init-db": "node scripts/initDB",
-    "lint": "eslint --ext .js commands handlers logger",
-    "lint-autofix": "eslint --ext .js commands handlers logger --fix",
     "start": "cross-env NODE_ENV=production node index.js",
     "test": "echo \"Write some tests!\""
   },
@@ -19,22 +18,11 @@
   "author": "Max M <pragma8123@gmail.com>",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@discordjs/opus": "^0.8.0",
-    "axios": "^0.24.0",
-    "bufferutil": "^4.0.6",
     "dotenv": "^10.0.0",
-    "eris": "^0.16.1",
-    "sodium-native": "^3.2.1",
-    "topgg-autoposter": "^2.0.1",
-    "winston": "^3.6.0",
-    "zlib-sync": "^0.1.7"
+    "topgg-autoposter": "^2.0.1"
   },
   "devDependencies": {
     "cross-env": "^5.2.1",
-    "eslint": "^8.19.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "prettier": "^1.19.1",
     "rimraf": "^2.7.1"
   }
 }

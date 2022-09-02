@@ -1,14 +1,15 @@
 FROM node:lts
 
-RUN ["apt-get", "update"]
-RUN ["apt-get", "install", "-y", "ffmpeg", "build-essential", "make", "python", "python2"]
-
 WORKDIR /usr/src/app
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+RUN apt update
+RUN apt install -y libtool-bin
+RUN npm ci
 COPY . .
-RUN npm i
+RUN npm run build
 
-ENV NAME CMD_PREFIX
 ENV NAME BOT_TOKEN
 ENV NAME TGG_TOKEN
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start:prod"]

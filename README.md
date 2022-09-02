@@ -1,11 +1,17 @@
-# Three Dog [![Discord Bots](https://discordbots.org/api/widget/status/461602422192734228.svg)](https://discordbots.org/bot/461602422192734228) [![Gitlab Build Status](https://gitlab.machon.family/Max/three-dog/badges/master/pipeline.svg)](https://gitlab.machon.family/Max/three-dog/-/commits/master)
+# **Three Dog 🎙️** | [![Discord Bots](https://discordbots.org/api/widget/status/461602422192734228.svg)](https://discordbots.org/bot/461602422192734228)
 ### _"Because one dog ain't enough, and two is too low, it's me, Three Dog!"_
 
 # About
-With Three Dog Bot, you can bring the "beauty" of the Capital Wasteland to your discord server
+With Three Dog Bot, you can bring the _"beauty"_ and _"splendor"_ of the Capital Wasteland to your discord server
 
 # Commands
-* `3dog tunein`
-* `3dog tuneout`
-* `3dog meme`
-* `3dog help`
+* `/tunein` - Have Three Dog join your current voice channel for his live radio broadcast
+* `/tuneout` - Remove Three Dog from your voice channel
+* `/meme` - Post a fresh Fallout-related meme
+* `/vote` - Post a link to vote for the bot on Top.gg
+* `/help` - A help message displaying these commands and other helpful resources
+
+# Setup
+1. `npm install`
+2. Copy `.env.sample` to `.env` and edit the values accordingly. `BOT_TOKEN` is required
+3. `npm run start:prod` or `npm run start:dev` for live code recompilation

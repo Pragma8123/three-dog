@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GatewayIntentBits } from 'discord.js';
 
 import { BotModule } from './bot/bot.module';
+import { RedditModule } from './reddit/reddit.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { BotModule } from './bot/bot.module';
           intents: [
             GatewayIntentBits.Guilds,
             GatewayIntentBits.GuildMessages,
+            GatewayIntentBits.GuildVoiceStates,
             GatewayIntentBits.DirectMessages,
           ],
         },
@@ -29,6 +31,7 @@ import { BotModule } from './bot/bot.module';
       inject: [ConfigService],
     }),
     BotModule,
+    RedditModule,
   ],
 })
 export class AppModule {}

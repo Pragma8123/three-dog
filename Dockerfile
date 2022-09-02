@@ -3,6 +3,8 @@ FROM node:lts
 WORKDIR /usr/src/app
 COPY package.json package.json
 COPY package-lock.json package-lock.json
+RUN apt update
+RUN apt install -y libtool-bin
 RUN npm ci
 COPY . .
 RUN npm run build

@@ -24,14 +24,19 @@ export class HelpCommand implements DiscordCommand {
               `,
             },
             {
-              name: 'Support Server',
+              name: 'Invite',
+              value:
+                '*Spread the good fight!* [**Invite Three Dog to your server!**](https://3dog.rocks)',
+            },
+            {
+              name: 'Help',
               value:
                 '*Need Help?* [**Join the support server**](https://discord.gg/QwfXED8)',
             },
             {
               name: 'Donate',
               value:
-                '*If you like me around,* [**buy my creator a coffee!**](https://paypal.me/pragma8123)',
+                '*If you like me around,* [**buy my creator a coffee!**](https://ko-fi.com/pragma8123)',
             },
           ],
         },

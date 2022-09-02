@@ -22,13 +22,9 @@ export class TuneInCommand implements DiscordCommand {
         return;
       }
 
-      console.log(`member.voice.channelId = ${member.voice.channelId}`);
-
       const channelId = member.voice.channelId;
       const guildId = member.voice.guild.id;
-
       const adapterCreator = member.guild.voiceAdapterCreator;
-
       this.gnrService.tuneIn(channelId, guildId, adapterCreator);
 
       await interaction.editReply({ content: 'Bringing you the news!' });

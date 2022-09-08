@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@discord-nestjs/common": "^4.0.7",
-    "@discord-nestjs/core": "^4.2.1",
+    "@discord-nestjs/core": "^4.3.0",
     "@discordjs/opus": "^0.8.0",
     "@discordjs/voice": "^0.11.0",
     "@nestjs/axios": "^0.1.0",

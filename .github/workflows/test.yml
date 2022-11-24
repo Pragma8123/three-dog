@@ -24,3 +24,9 @@ jobs:
       
       - name: Test
         run: npm run test
+
+      - name: Release dry-run
+        run: npm run semantic-release --dry-run
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

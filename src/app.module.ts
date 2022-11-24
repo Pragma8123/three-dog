@@ -2,7 +2,7 @@ import { DiscordModule } from '@discord-nestjs/core';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GatewayIntentBits } from 'discord.js';
-
+import { AppController } from './app.controller';
 import { BotModule } from './bot/bot.module';
 import { RedditModule } from './reddit/reddit.module';
 
@@ -33,5 +33,6 @@ import { RedditModule } from './reddit/reddit.module';
     BotModule,
     RedditModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}

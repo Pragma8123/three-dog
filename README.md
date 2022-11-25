@@ -12,7 +12,7 @@ With Three Dog Bot, you can bring the _"beauty"_ and _"splendor"_ of the Capital
 * `/help` - A help message displaying these commands and other helpful resources
 
 ## Requirements
-* Node.js 16+
+* Node.js 16.9+
 * Build tools for `node-gyp`. `libtool-bin` package from APT is recommended.
 * A Discord bot token. You can create one [here!](https://discord.com/developers/applications/)
 

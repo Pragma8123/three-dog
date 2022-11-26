@@ -16,8 +16,13 @@ export class MemeCommand implements DiscordCommand {
     await interaction.editReply({
       embeds: [
         {
-          title: post.title.length > 256 ? `${post.title.slice(0, 253)}...` : post.title,
-          description: post.link_flair_text ? inlineCode(post.link_flair_text) : undefined,
+          title:
+            post.title.length > 256
+              ? `${post.title.slice(0, 253)}...`
+              : post.title,
+          description: post.link_flair_text
+            ? inlineCode(post.link_flair_text)
+            : undefined,
           url: `https://reddit.com${post.permalink}`,
           image: { url: post.url },
           color: BotConstants.COLOR,

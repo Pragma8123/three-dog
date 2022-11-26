@@ -40,6 +40,9 @@ export class HelpCommand implements DiscordCommand {
                 '*If you like me around,* [**buy my creator a coffee!**](https://ko-fi.com/pragma8123)',
             },
           ],
+          footer: {
+            text: `v${process.env.npm_package_version}`,
+          },
         },
       ],
     });

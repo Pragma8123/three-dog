@@ -1,5 +1,5 @@
 import { Command, DiscordCommand } from '@discord-nestjs/core';
-import { CommandInteraction } from 'discord.js';
+import { CommandInteraction, inlineCode } from 'discord.js';
 import { RedditService } from '../../reddit/reddit.service';
 import { BotConstants } from '../bot.constants';
 
@@ -12,21 +12,12 @@ export class MemeCommand implements DiscordCommand {
 
   async handler(interaction: CommandInteraction): Promise<void> {
     await interaction.deferReply();
-
     const post = (await this.redditService.getRandomFalloutMeme()).data;
-
-    const title =
-      post.title.length > 256 ? `${post.title.slice(0, 253)}...` : post.title;
-
-    const flair = post.link_flair_text
-      ? `\`${post.link_flair_text}\``
-      : undefined;
-
     await interaction.editReply({
       embeds: [
         {
-          title,
-          description: flair,
+          title: post.title.length > 256 ? `${post.title.slice(0, 253)}...` : post.title,
+          description: post.link_flair_text ? inlineCode(post.link_flair_text) : undefined,
           url: `https://reddit.com${post.permalink}`,
           image: { url: post.url },
           color: BotConstants.COLOR,

@@ -21,11 +21,7 @@ import { RedditModule } from './reddit/reddit.module';
             GatewayIntentBits.DirectMessages,
           ],
         },
-        registerCommandOptions: [
-          {
-            removeCommandsBefore: true,
-          },
-        ],
+        registerCommandOptions: [{ removeCommandsBefore: true }],
         failOnLogin: true,
       }),
       inject: [ConfigService],

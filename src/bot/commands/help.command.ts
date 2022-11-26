@@ -1,5 +1,6 @@
 import { Command, DiscordCommand } from '@discord-nestjs/core';
 import { CommandInteraction } from 'discord.js';
+import { BotConstants } from '../bot.constants';
 
 @Command({
   name: 'help',
@@ -11,7 +12,7 @@ export class HelpCommand implements DiscordCommand {
       ephemeral: true,
       embeds: [
         {
-          color: 0x1aff80, // Fallout 3 UI green
+          color: BotConstants.COLOR,
           fields: [
             {
               name: 'Commands',

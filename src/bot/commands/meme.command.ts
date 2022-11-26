@@ -1,6 +1,7 @@
 import { Command, DiscordCommand } from '@discord-nestjs/core';
 import { CommandInteraction } from 'discord.js';
 import { RedditService } from '../../reddit/reddit.service';
+import { BotConstants } from '../bot.constants';
 
 @Command({
   name: 'meme',
@@ -28,7 +29,7 @@ export class MemeCommand implements DiscordCommand {
           description: flair,
           url: `https://reddit.com${post.permalink}`,
           image: { url: post.url },
-          color: 0x1aff80, // Fallout 3 UI green
+          color: BotConstants.COLOR,
           footer: {
             text: `👍 ${post.ups} | 💬 ${post.num_comments} | ${post.subreddit_name_prefixed} | u/${post.author}`,
           },

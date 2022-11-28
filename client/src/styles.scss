@@ -1,0 +1,24 @@
+@font-face {
+  font-family: Overseer;
+  src: url('assets/fonts/Overseer.eot');
+  src: url('assets/fonts/Overseer.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/Overseer.woff2') format('woff2'),
+  url('assets/fonts/Overseer.woff') format('woff'),
+  url('assets/fonts/Overseer.ttf') format('truetype'),
+  url('assets/fonts/Overseer.svg') format('svg');
+}
+
+@font-face {
+  font-family: Fixedsys;
+  src: url('assets/fonts/FSEX300.eot');
+  src: url('assets/fonts/FSEX300.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/FSEX300.woff2') format('woff2'),
+  url('assets/fonts/FixedsysExcelsiorIIIb.woff') format('woff'),
+  url('assets/fonts/FSEX300.ttf') format('truetype'),
+  url('assets/fonts/FixedsysExcelsiorIIIb.svg') format('svg');
+}
+
+$green: #1aff80; // Fallout 3 UI green
+$family-primary: Overseer;
+
+@import 'node_modules/bulma/bulma.sass';

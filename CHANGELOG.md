@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Pragma8123/three-dog/compare/v1.2.1...v1.3.0) (2022-11-28)
+
+
+### Features
+
+* **client:** init client ([#83](https://github.com/Pragma8123/three-dog/issues/83)) ([16e389f](https://github.com/Pragma8123/three-dog/commit/16e389f092718c3bc1531d67a9ea4d123ee7c96f))
+
 ## [1.2.1](https://github.com/Pragma8123/three-dog/compare/v1.2.0...v1.2.1) (2022-11-26)
 
 

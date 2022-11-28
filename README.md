@@ -1,4 +1,5 @@
-# **Three Dog 🎙️** | [![Discord Bots](https://discordbots.org/api/widget/status/461602422192734228.svg)](https://discordbots.org/bot/461602422192734228)
+# **Three Dog 🎙️**
+[![Discord Bots](https://discordbots.org/api/widget/status/461602422192734228.svg)](https://discordbots.org/bot/461602422192734228) [![Lint & Test](https://github.com/Pragma8123/three-dog/actions/workflows/test.yml/badge.svg)](https://github.com/Pragma8123/three-dog/actions/workflows/test.yml) [![Release](https://github.com/Pragma8123/three-dog/actions/workflows/release.yml/badge.svg)](https://github.com/Pragma8123/three-dog/actions/workflows/release.yml) [![Build and Push Docker Image](https://github.com/Pragma8123/three-dog/actions/workflows/build_and_push.yml/badge.svg)](https://github.com/Pragma8123/three-dog/actions/workflows/build_and_push.yml)
 ### _"Because one dog ain't enough, and two is too low, it's me, Three Dog!"_
 
 ## About
@@ -19,4 +20,6 @@ With Three Dog Bot, you can bring the _"beauty"_ and _"splendor"_ of the Capital
 ## Setup
 1. `npm install`
 2. Copy `.env.sample` to `.env` and edit the values accordingly. `BOT_TOKEN` is required
-3. `npm run start:prod` or `npm run start:dev` for live code recompilation
+3. `npm run start:dev` for back-end/bot development
+   * _Optional_ - run `npm run start:client` in a second terminal for client development
+4. Build with `npm run build` and test production with `npm run start:prod`

@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Pragma8123/three-dog/compare/v1.3.0...v1.3.1) (2022-11-29)
+
+
+### Bug Fixes
+
+* **client:** fix Open Graph tags ([c02f86c](https://github.com/Pragma8123/three-dog/commit/c02f86c6aa588656cc61028f08c24c572b848275))
+
 # [1.3.0](https://github.com/Pragma8123/three-dog/compare/v1.2.1...v1.3.0) (2022-11-28)
 
 

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A Fallout Themed Discord Bot">
 
     <!-- Chrome, Firefox, and Opera theme color -->
     <meta name="theme-color" content="#1aff80" />
@@ -25,8 +26,20 @@
     />
     <meta property="og:image:type" content="image/png" />
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://3dog.rocks/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Three Dog Bot">
+    <meta property="og:description" content="A Fallout Themed Discord Bot">
+    <meta property="og:image" content="http://3dog.rocks/threedog.png">
+  
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="3dog.rocks">
+    <meta property="twitter:url" content="https://3dog.rocks/">
+    <meta name="twitter:title" content="Three Dog Bot">
+    <meta name="twitter:description" content="A Fallout Themed Discord Bot">
+    <meta name="twitter:image" content="http://3dog.rocks/threedog.png">
 
     <!-- Font Awesome v5 -->
     <script
@@ -42,62 +55,14 @@
       crossorigin="anonymous"
     ></script>
 
-    <link rel="stylesheet" href="src/styles.scss" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
 
     <!-- Title -->
     <title>Three Dog Bot</title>
   </head>
   <body>
-    <section class="hero is-fullheight is-dark is-bold">
-      <div class="hero-head">
-        <!-- Reserved -->
-      </div>
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <div class="columns is-centered">
-            <div class="column is-6">
-              <div class="level">
-                <div class="level-item">
-                  <figure class="image is-128x128">
-                    <img src="gnrlogo.png">
-                  </figure>
-                </div>
-              </div>
-              <h1 class="title is-1 is-uppercase">Three Dog</h1>
-              <h4 class="subtitle is-4">
-                <i>A Fallout-Themed Discord Bot</i>
-              </h4>
-            </div>
-          </div>
-          <div class="columns is-centered is-mobile">
-            <div class="column is-6">
-              <a
-                class="button is-medium is-success"
-                target="_blank"
-                href="https://discordapp.com/oauth2/authorize?client_id=461602422192734228&scope=bot&permissions=3148800"
-              >Invite Me</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-foot">
-        <div class="content has-text-centered">
-          <div class="buttons has-addons is-centered">
-            <a class="button" target="_blank" href="https://paypal.me/pragma8123">Donate</a>
-            <a class="button" target="_blank" href="https://discord.gg/QwfXED8">
-              <span class="icon is-small">
-                <i class="fab fa-discord"></i>
-              </span>
-            </a>
-            <a class="button" target="_blank" href="https://github.com/Pragma8123/3dog.me">
-              <span class="icon is-small">
-                <i class="fab fa-github"></i>
-              </span>
-            </a>
-          </div>
-          <div></div>
-        </div>
-      </div>
-    </section>
+    <div id="app"></div>
+    <script type="module" src="src/main.ts"></script>
   </body>
 </html>

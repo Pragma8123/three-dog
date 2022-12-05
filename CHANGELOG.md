@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/Pragma8123/three-dog/compare/v1.3.1...v1.4.0) (2022-12-03)
+
+
+### Features
+
+* **client:** adding Vue to the front end ([2761bb5](https://github.com/Pragma8123/three-dog/commit/2761bb596e352859d430f4f04d886fbe3b22f291))
+* **client:** adding Vue to the front end ([bab8d53](https://github.com/Pragma8123/three-dog/commit/bab8d53e54bcb875dcc8648595e75d1653fd1ea3))
+
 ## [1.3.1](https://github.com/Pragma8123/three-dog/compare/v1.3.0...v1.3.1) (2022-11-29)
 
 

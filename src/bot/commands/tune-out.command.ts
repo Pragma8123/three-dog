@@ -1,7 +1,7 @@
 import { Command, DiscordCommand } from '@discord-nestjs/core';
 import { Logger } from '@nestjs/common';
 import { CommandInteraction } from 'discord.js';
-import { GNRService } from '../gnr.service';
+import { GNRService } from '../radio/gnr.service';
 
 @Command({
   name: 'tuneout',

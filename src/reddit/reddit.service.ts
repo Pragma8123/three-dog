@@ -11,7 +11,7 @@ export class RedditService {
 
   constructor(
     private readonly httpService: HttpService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {}
 
   async getRandomFalloutMeme(): Promise<RedditPost> {

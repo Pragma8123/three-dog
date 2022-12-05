@@ -1,6 +1,6 @@
 import { Command, DiscordCommand } from '@discord-nestjs/core';
 import { CommandInteraction, GuildMember } from 'discord.js';
-import { GNRService } from '../gnr.service';
+import { GNRService } from '../radio/gnr.service';
 
 @Command({
   name: 'tunein',

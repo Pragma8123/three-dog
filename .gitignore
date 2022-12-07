@@ -1,7 +1,9 @@
-node_modules/
 dist/
+temp/
+node_modules/
 
 .env
+*.sqlite3
 *.exe
 *.log
 *.key

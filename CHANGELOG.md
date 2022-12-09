@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/Pragma8123/three-dog/compare/v1.5.0...v1.5.1) (2022-12-09)
+
+
+### Bug Fixes
+
+* **oauth:** Handle invalid code errors gracefully ([442b5d9](https://github.com/Pragma8123/three-dog/commit/442b5d9e22183bdd33f51f478a550e8d93089973))
+
 # [1.5.0](https://github.com/Pragma8123/three-dog/compare/v1.4.0...v1.5.0) (2022-12-09)
 
 

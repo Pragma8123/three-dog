@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/Pragma8123/three-dog/compare/v1.4.0...v1.5.0) (2022-12-09)
+
+
+### Features
+
+* **backend:** Add discord w/ JWT auth ([ca8912e](https://github.com/Pragma8123/three-dog/commit/ca8912ede9efe68e05c3d2207ecdc50383dc5795))
+
 # [1.4.0](https://github.com/Pragma8123/three-dog/compare/v1.3.1...v1.4.0) (2022-12-03)
 
 

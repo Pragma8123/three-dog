@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/Pragma8123/three-dog/compare/v1.5.1...v1.6.0) (2022-12-10)
+
+
+### Bug Fixes
+
+* **client:** Fix GitHub repo link ([bf20974](https://github.com/Pragma8123/three-dog/commit/bf20974efa37ed9f0474d48b44ad40d0322f5350))
+
+
+### Features
+
+* **bot:** Add bot endpoint to backend ([79bdc7a](https://github.com/Pragma8123/three-dog/commit/79bdc7a7799b44950574df7fb92e1c9aec2d334a))
+
 ## [1.5.1](https://github.com/Pragma8123/three-dog/compare/v1.5.0...v1.5.1) (2022-12-09)
 
 

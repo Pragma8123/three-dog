@@ -4,6 +4,8 @@ import { ConfigModule } from '@nestjs/config';
 import { BotGateway } from './bot.gateway';
 import { CommandsModule } from './commands/commands.module';
 import { RadioModule } from './radio/radio.module';
+import { BotController } from './bot.controller';
+import { BotService } from './bot.service';
 
 @Module({
   imports: [
@@ -12,6 +14,7 @@ import { RadioModule } from './radio/radio.module';
     CommandsModule,
     RadioModule,
   ],
-  providers: [BotGateway],
+  providers: [BotGateway, BotService],
+  controllers: [BotController],
 })
 export class BotModule {}

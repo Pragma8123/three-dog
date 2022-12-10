@@ -48,7 +48,7 @@
               <a
                 class="button"
                 target="_blank"
-                href="https://github.com/Pragma8123/3dog.me"
+                href="https://github.com/Pragma8123/three-dog"
               >
                 <span class="icon is-small">
                   <i class="fab fa-github"></i>

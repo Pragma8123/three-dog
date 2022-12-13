@@ -31,7 +31,7 @@ export class RedditService {
 
     posts = this.filterPosts(response.data.data.children);
 
-    this.cacheManager.set(this.SUBREDDIT, posts, { ttl: 5 * 60 * 1000 }); // Cache for 5 minutes
+    this.cacheManager.set(this.SUBREDDIT, posts, 5 * 60 * 1000); // Cache for 5 minutes
 
     return posts[Math.floor(Math.random() * posts.length)];
   }

@@ -89,7 +89,7 @@
     "jest": "28.1.2",
     "prettier": "^2.3.2",
     "run-script-webpack-plugin": "^0.1.1",
-    "sass": "^1.56.1",
+    "sass": "^1.56.2",
     "semantic-release": "^19.0.5",
     "source-map-support": "^0.5.20",
     "supertest": "^6.3.1",

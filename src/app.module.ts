@@ -10,7 +10,6 @@ import { BotModule } from './bot/bot.module';
 import { RedditModule } from './reddit/reddit.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 
 @Module({
   imports: [
@@ -35,17 +34,7 @@ import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
       }),
       inject: [ConfigService],
     }),
-    MikroOrmModule.forRoot({
-      type: 'sqlite',
-      dbName: 'db/three-dog.sqlite3',
-      entities: ['dist/**/*.entity.js'],
-      entitiesTs: ['src/**/*.entity.ts'],
-      metadataProvider: TsMorphMetadataProvider,
-      migrations: {
-        path: 'dist/migrations',
-        pathTs: 'src/migrations',
-      },
-    }),
+    MikroOrmModule.forRoot(),
     BotModule,
     RedditModule,
     AuthModule,

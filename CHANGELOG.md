@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/Pragma8123/three-dog/compare/v1.6.0...v1.6.1) (2022-12-23)
+
+
+### Bug Fixes
+
+* **BotGateway:** Handle Discord gateway errors gracefully ([c59536d](https://github.com/Pragma8123/three-dog/commit/c59536defd925a84857e6955476cf92e90d8a799))
+
 # [1.6.0](https://github.com/Pragma8123/three-dog/compare/v1.5.1...v1.6.0) (2022-12-10)
 
 

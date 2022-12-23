@@ -6,10 +6,10 @@ export class User {
   id!: string;
 
   @Property()
-  email: string;
+  email?: string;
 
   @Property()
-  username: string;
+  username?: string;
 
   @Property()
   discriminator?: string;

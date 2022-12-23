@@ -20,10 +20,8 @@ export class CreateUserDto {
   @IsNotEmpty()
   readonly id: string;
 
-  @IsNotEmpty()
   readonly email: string;
 
-  @IsNotEmpty()
   readonly username: string;
 
   readonly discriminator: string;

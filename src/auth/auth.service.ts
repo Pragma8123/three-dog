@@ -16,22 +16,14 @@ export class AuthService {
   async validateUser(accessToken: string, refreshToken: string, profile: any) {
     const { id, email, username, discriminator } = profile;
 
-    let user = await this.usersService.findOne(id);
-    if (!user) {
-      this.logger.log(`Creating new user: ${id}`);
-
-      const userDto = new CreateUserDto(
-        id,
-        email,
-        username,
-        discriminator,
-        accessToken,
-        refreshToken,
-      );
-      user = await this.usersService.create(userDto);
-    }
-
-    return user;
+    return await this.usersService.createIfNotExists({
+      id,
+      email,
+      username,
+      discriminator,
+      accessToken,
+      refreshToken,
+    });
   }
 
   async login(user: User) {

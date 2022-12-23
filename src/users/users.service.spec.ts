@@ -73,4 +73,35 @@ describe('UsersService', () => {
       expect(await service.findOne(user.id)).toBeNull();
     });
   });
+
+  describe('createIfNotExists', () => {
+    let createUserDto: CreateUserDto;
+
+    beforeEach(() => {
+      createUserDto = new CreateUserDto(
+        user.id,
+        user.email,
+        user.username,
+        user.discriminator,
+        user.accessToken,
+        user.refreshToken,
+      );
+    });
+
+    it('should return a user account if one exists', async () => {
+      jest.spyOn(usersRepository, 'findOne').mockResolvedValue(user);
+
+      expect(await service.createIfNotExists(createUserDto)).toEqual(user);
+    });
+
+    it('should create a new user account if one does not exist', async () => {
+      jest.spyOn(usersRepository, 'findOne').mockResolvedValue(null);
+      jest.spyOn(usersRepository, 'create').mockReturnValue(user);
+      jest
+        .spyOn(usersRepository, 'persistAndFlush')
+        .mockImplementation(() => Promise.resolve());
+
+      expect(await service.createIfNotExists(createUserDto)).toEqual(user);
+    });
+  });
 });

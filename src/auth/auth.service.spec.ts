@@ -18,8 +18,7 @@ describe('AuthService', () => {
         {
           provide: UsersService,
           useValue: {
-            findOne: jest.fn(),
-            create: jest.fn(),
+            createIfNotExists: jest.fn(),
           },
         },
       ],
@@ -43,17 +42,8 @@ describe('AuthService', () => {
   });
 
   describe('validateUser', () => {
-    it('should return a user if one is found by the usersService', async () => {
-      jest.spyOn(usersService, 'findOne').mockResolvedValue(user);
-
-      expect(
-        await service.validateUser(user.accessToken, user.refreshToken, user),
-      ).toEqual(user);
-    });
-
-    it('should create a new user if one does not exist in the database', async () => {
-      jest.spyOn(usersService, 'findOne').mockResolvedValue(null);
-      jest.spyOn(usersService, 'create').mockResolvedValue(user);
+    it('should return a user from usersService', async () => {
+      jest.spyOn(usersService, 'createIfNotExists').mockResolvedValue(user);
 
       expect(
         await service.validateUser(user.accessToken, user.refreshToken, user),

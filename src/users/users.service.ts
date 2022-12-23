@@ -19,4 +19,14 @@ export class UsersService {
   async findOne(userId: string) {
     return await this.usersRepository.findOne({ id: userId });
   }
+
+  async createIfNotExists(dto: CreateUserDto) {
+    const user = await this.findOne(dto.id);
+
+    if (!user) {
+      return await this.create(dto);
+    }
+
+    return user;
+  }
 }

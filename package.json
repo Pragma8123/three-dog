@@ -31,7 +31,7 @@
     "@discord-nestjs/core": "^4.3.1",
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.14.0",
-    "@mikro-orm/cli": "^5.6.0",
+    "@mikro-orm/cli": "^5.6.1",
     "@mikro-orm/core": "^5.6.1",
     "@mikro-orm/migrations": "^5.5.3",
     "@mikro-orm/nestjs": "^5.1.5",

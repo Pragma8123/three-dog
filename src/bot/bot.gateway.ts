@@ -1,4 +1,4 @@
-import { InjectDiscordClient, Once } from '@discord-nestjs/core';
+import { InjectDiscordClient, On, Once } from '@discord-nestjs/core';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Client } from 'discord.js';
@@ -23,6 +23,11 @@ export class BotGateway {
     this.setActivityStatus('🎙️ On Air! - /help');
 
     this.setupTggStats();
+  }
+
+  @On('error')
+  onError(error: Error) {
+    this.logger.error(error);
   }
 
   setActivityStatus(status: string) {

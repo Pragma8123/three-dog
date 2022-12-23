@@ -26,7 +26,6 @@ describe('UsersService', () => {
     usersRepository = module.get<UsersRepository>(getRepositoryToken(User));
 
     user = new User();
-    user = new User();
     user.id = '123';
     user.email = 'wumpus@gmail.com';
     user.username = 'wumpus';

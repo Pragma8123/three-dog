@@ -12,7 +12,7 @@ export class BotGateway {
   private autoPoster: BasePoster;
 
   constructor(
-    private configService: ConfigService,
+    private readonly configService: ConfigService,
     @InjectDiscordClient() private readonly client: Client,
   ) {}
 

@@ -7,6 +7,7 @@ import {
   createAudioResource,
   DiscordGatewayAdapterCreator,
   getVoiceConnection,
+  getVoiceConnections,
   joinVoiceChannel,
   NoSubscriberBehavior,
 } from '@discordjs/voice';
@@ -63,6 +64,10 @@ export class GNRService implements OnModuleInit {
 
   isPlayingInGuild(guildId: string): boolean {
     return !!getVoiceConnection(guildId);
+  }
+
+  getTotalConnections() {
+    return getVoiceConnections().size;
   }
 
   private loadTrack() {

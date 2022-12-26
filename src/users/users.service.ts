@@ -1,3 +1,4 @@
+import { MikroORM, UseRequestContext } from '@mikro-orm/core';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -8,23 +9,28 @@ import { UsersRepository } from './users.repository';
 export class UsersService {
   constructor(
     @InjectRepository(User) private readonly usersRepository: UsersRepository,
+    private readonly orm: MikroORM,
   ) {}
 
+  @UseRequestContext()
   async create(dto: CreateUserDto) {
     const user = this.usersRepository.create(dto);
     await this.usersRepository.persistAndFlush(user);
     return user;
   }
 
+  @UseRequestContext()
   async findOne(userId: string) {
     return await this.usersRepository.findOne({ id: userId });
   }
 
+  @UseRequestContext()
   async createIfNotExists(dto: CreateUserDto) {
-    const user = await this.findOne(dto.id);
+    let user = await this.usersRepository.findOne({ id: dto.id });
 
     if (!user) {
-      return await this.create(dto);
+      user = this.usersRepository.create(dto);
+      await this.usersRepository.persistAndFlush(user);
     }
 
     return user;

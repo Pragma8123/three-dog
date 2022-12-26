@@ -1,3 +1,4 @@
+import { MikroORM } from '@mikro-orm/core';
 import { getRepositoryToken } from '@mikro-orm/nestjs';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -8,12 +9,18 @@ import { UsersService } from './users.service';
 describe('UsersService', () => {
   let service: UsersService;
   let usersRepository: UsersRepository;
-
   let user: User;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
+        {
+          provide: MikroORM,
+          useValue: await MikroORM.init(
+            { type: 'sqlite', entities: [User], dbName: 'test' },
+            false,
+          ),
+        },
         UsersService,
         {
           provide: getRepositoryToken(User),
@@ -24,7 +31,6 @@ describe('UsersService', () => {
 
     service = module.get<UsersService>(UsersService);
     usersRepository = module.get<UsersRepository>(getRepositoryToken(User));
-
     user = new User();
     user.id = '123';
     user.email = 'wumpus@gmail.com';

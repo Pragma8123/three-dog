@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/Pragma8123/three-dog/compare/v1.6.1...v1.7.0) (2022-12-26)
+
+
+### Bug Fixes
+
+* Correct errors when not using request contexts ([1a81040](https://github.com/Pragma8123/three-dog/commit/1a81040c2f60577985f5fd93b21f2c70e3f90765))
+
+
+### Features
+
+* Add GNR listener count to /api/bot ([0f7b0b2](https://github.com/Pragma8123/three-dog/commit/0f7b0b22d8734bb34566240b452adab46a8e11fb))
+
 ## [1.6.1](https://github.com/Pragma8123/three-dog/compare/v1.6.0...v1.6.1) (2022-12-23)
 
 

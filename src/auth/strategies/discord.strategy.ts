@@ -15,7 +15,7 @@ export class DiscordStrategy extends PassportStrategy(Strategy, 'discord') {
       clientSecret: configService.get<string>('DISCORD_OAUTH_CLIENT_SECRET'),
       callbackURL:
         configService.get<string>('APP_URL') + '/api/auth/discord/login',
-      scope: ['identify', 'email'],
+      scope: ['identify'],
     });
   }
 

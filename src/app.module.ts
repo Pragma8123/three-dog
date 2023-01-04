@@ -10,6 +10,7 @@ import { BotModule } from './bot/bot.module';
 import { RedditModule } from './reddit/reddit.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { HealthController } from './health.controller';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     UsersModule,
   ],
+  controllers: [HealthController],
 })
 export class AppModule implements OnModuleInit {
   constructor(private readonly orm: MikroORM) {}

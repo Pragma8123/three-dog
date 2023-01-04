@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/Pragma8123/three-dog/compare/v1.7.0...v1.8.0) (2023-01-04)
+
+
+### Features
+
+* add healthcheck API endpoint ([a4113f3](https://github.com/Pragma8123/three-dog/commit/a4113f3a3b7a374d55340984b790db38b2dd665e))
+
 # [1.7.0](https://github.com/Pragma8123/three-dog/compare/v1.6.1...v1.7.0) (2022-12-26)
 
 

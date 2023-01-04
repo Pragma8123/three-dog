@@ -25,6 +25,7 @@ export class DiscordStrategy extends PassportStrategy(Strategy, 'discord') {
       refreshToken,
       profile,
     );
+
     if (!user) {
       throw new UnauthorizedException();
     }

@@ -21,7 +21,7 @@
           <a
             class="button is-medium is-success"
             target="_blank"
-            href="https://discordapp.com/oauth2/authorize?client_id=461602422192734228&scope=bot&permissions=3148800"
+            href="https://discordapp.com/oauth2/authorize?client_id=461602422192734228&scope=bot&permissions=3145728"
             >Invite Me</a
           >
         </div>

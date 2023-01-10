@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/Pragma8123/three-dog/compare/v1.8.0...v1.8.1) (2023-01-10)
+
+
+### Bug Fixes
+
+* **bot-voice:** fix issue with radio not playing ([80dee6c](https://github.com/Pragma8123/three-dog/commit/80dee6cd62b2fc43272afdc99e92d7296686069e))
+
 # [1.8.0](https://github.com/Pragma8123/three-dog/compare/v1.7.0...v1.8.0) (2023-01-04)
 
 

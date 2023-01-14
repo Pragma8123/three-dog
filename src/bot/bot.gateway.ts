@@ -1,28 +1,22 @@
 import { InjectDiscordClient, On, Once } from '@discord-nestjs/core';
 import { Injectable, Logger } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { Client } from 'discord.js';
-import { AutoPoster } from 'topgg-autoposter';
-import { BasePoster } from 'topgg-autoposter/dist/structs/BasePoster';
+import { Cron } from '@nestjs/schedule';
+import { TggService } from '../tgg/tgg.service';
 
 @Injectable()
 export class BotGateway {
   private readonly logger = new Logger(BotGateway.name);
 
-  private autoPoster: BasePoster;
-
   constructor(
-    private readonly configService: ConfigService,
     @InjectDiscordClient() private readonly client: Client,
+    private readonly tggService: TggService,
   ) {}
 
   @Once('ready')
   onReady() {
-    this.logger.log(`Bot ${this.client.user.tag} was started!`);
-
     this.setActivityStatus('🎙️ On Air! - /help');
-
-    this.setupTggStats();
+    this.logger.log(`Bot ${this.client.user.tag} was started!`);
   }
 
   @On('error')
@@ -30,29 +24,22 @@ export class BotGateway {
     this.logger.error(error);
   }
 
+  @Cron('0 * * * *') // Every hour
+  async updateStats() {
+    const guilds = await this.client.guilds.fetch();
+    const guildCount = guilds.size;
+    const botId = this.client.user.id;
+    try {
+      await this.tggService.postStats(botId, guildCount);
+      this.logger.log(`Updated stats: ${guildCount} guilds`);
+    } catch (error) {
+      this.logger.error(`Failed to update stats: ${error}`);
+    }
+  }
+
   setActivityStatus(status: string) {
     this.client.user.setActivity({
       name: status,
     });
-  }
-
-  private setupTggStats() {
-    const tggToken = this.configService.get('TGG_TOKEN');
-
-    if (tggToken) {
-      this.autoPoster = AutoPoster(tggToken, this.client);
-
-      this.autoPoster.on('posted', () =>
-        this.logger.log('Top.gg Autoposter: Posted stats to Top.gg!'),
-      );
-
-      this.autoPoster.on('error', (error) =>
-        this.logger.error(`Top.gg Autoposter: ${error.toString()}`),
-      );
-
-      this.logger.log('Top.gg Autoposter started!');
-    } else {
-      this.logger.log('Top.gg Autoposter not started...');
-    }
   }
 }

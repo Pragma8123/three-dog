@@ -6,6 +6,7 @@ import { CommandsModule } from './commands/commands.module';
 import { RadioModule } from './radio/radio.module';
 import { BotController } from './bot.controller';
 import { BotService } from './bot.service';
+import { TggModule } from '../tgg/tgg.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { BotService } from './bot.service';
     DiscordModule.forFeature(),
     CommandsModule,
     RadioModule,
+    TggModule,
   ],
   providers: [BotGateway, BotService],
   controllers: [BotController],

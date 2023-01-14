@@ -11,6 +11,8 @@ import { RedditModule } from './reddit/reddit.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { HealthController } from './health.controller';
+import { TggModule } from './tgg/tgg.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -36,10 +38,12 @@ import { HealthController } from './health.controller';
       inject: [ConfigService],
     }),
     MikroOrmModule.forRoot(),
+    ScheduleModule.forRoot(),
     BotModule,
     RedditModule,
     AuthModule,
     UsersModule,
+    TggModule,
   ],
   controllers: [HealthController],
 })

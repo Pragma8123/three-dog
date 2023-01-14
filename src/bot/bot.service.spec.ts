@@ -34,4 +34,16 @@ describe('BotService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  describe('getGuildCount', () => {
+    it('should return the guild count', () => {
+      expect(service.getGuildCount()).toBe(1);
+    });
+  });
+
+  describe('getUserCount', () => {
+    it('should return the user count', () => {
+      expect(service.getUserCount()).toBe(1);
+    });
+  });
 });

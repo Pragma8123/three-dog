@@ -1,4 +1,4 @@
-import { Controller, Get, Request, UseGuards } from '@nestjs/common';
+import { Controller, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { DiscordAuthGuard } from './guards/discord.guard';
 
@@ -7,7 +7,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @UseGuards(DiscordAuthGuard)
-  @Get('discord/login')
+  @Post('discord/login')
   async login(@Request() req: any) {
     return this.authService.login(req.user);
   }

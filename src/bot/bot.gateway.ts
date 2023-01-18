@@ -26,8 +26,7 @@ export class BotGateway {
 
   @Cron('0 * * * *') // Every hour
   async updateStats() {
-    const guilds = await this.client.guilds.fetch();
-    const guildCount = guilds.size;
+    const guildCount = this.client.guilds.cache.size;
     const botId = this.client.user.id;
     try {
       await this.tggService.postStats(botId, guildCount);

@@ -1,3 +1,11 @@
+## [1.8.2](https://github.com/Pragma8123/three-dog/compare/v1.8.1...v1.8.2) (2023-01-18)
+
+
+### Bug Fixes
+
+* **auth-jwt:** set JWT token expiry to 7 days ([945498b](https://github.com/Pragma8123/three-dog/commit/945498baac9589e9f8e91388323f7f885dfee403))
+* **auth:** change /discord/login to a POST route ([4a79196](https://github.com/Pragma8123/three-dog/commit/4a791963459438ecac79c841cdd7b8aa019cac5c))
+
 ## [1.8.1](https://github.com/Pragma8123/three-dog/compare/v1.8.0...v1.8.1) (2023-01-10)
 
 

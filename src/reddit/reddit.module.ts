@@ -1,5 +1,5 @@
 import { HttpModule } from '@nestjs/axios';
-import { CacheModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { RedditService } from './reddit.service';
 
 @Module({
@@ -7,7 +7,6 @@ import { RedditService } from './reddit.service';
     HttpModule.register({
       baseURL: 'https://reddit.com/',
     }),
-    CacheModule.register(),
   ],
   providers: [RedditService],
   exports: [RedditService],

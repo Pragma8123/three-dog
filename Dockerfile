@@ -53,6 +53,7 @@ FROM node:hydrogen-alpine AS production
 
 WORKDIR /usr/src/app
 
+COPY --chown=node:node --from=build /usr/src/app/package*.json ./
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
 COPY --chown=node:node --from=build /usr/src/app/client/dist ./client/dist
@@ -68,4 +69,4 @@ ENV DISCORD_OAUTH_CLIENT_SECRET=
 # HTTP port
 EXPOSE 3000
 
-CMD ["node", "dist/main.js"]
+CMD ["npm", "run", "start:prod"]

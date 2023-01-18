@@ -8,8 +8,13 @@ FROM node:18.13.0-slim AS development
 WORKDIR /usr/src/app
 
 # Install dependencies for node-gyp
-RUN apt-get update
-RUN apt-get install libtool-bin make python3 g++ -y
+RUN apt-get update \
+    && apt-get install -y \
+    g++ \
+    libtool-bin \
+    make \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy application dependency manifests
 COPY --chown=node:node package*.json ./
@@ -50,6 +55,11 @@ FROM node:18.13.0-slim AS production
 
 WORKDIR /usr/src/app
 
+RUN apt-get update \
+    && apt-get install -y \
+    dumb-init \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY --chown=node:node --from=build /usr/src/app/package*.json ./
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
@@ -68,4 +78,4 @@ ENV NODE_ENV production
 # HTTP port
 EXPOSE 3000
 
-CMD ["npm", "run", "start:prod"]
+CMD ["dumb-init", "npm", "run", "start:prod"]

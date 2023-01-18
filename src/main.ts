@@ -7,6 +7,11 @@ declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix('api');
+  process.on('SIGINT', async () => {
+    console.debug('SIGINT signal received: closing HTTP server');
+    await app.close();
+    process.exit(0);
+  });
   await app.listen(3000);
 
   if (module.hot) {

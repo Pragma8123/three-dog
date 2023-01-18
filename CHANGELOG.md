@@ -1,3 +1,16 @@
+# [1.9.0](https://github.com/Pragma8123/three-dog/compare/v1.8.2...v1.9.0) (2023-01-18)
+
+
+### Bug Fixes
+
+* **bot:** correct issue with posting guild count ([bb7c067](https://github.com/Pragma8123/three-dog/commit/bb7c06737ffeb9d257edae405388cf96ea2fd693))
+* **commands:** fix undefined version in /help command ([0e8d1b9](https://github.com/Pragma8123/three-dog/commit/0e8d1b9fffd146a897b94cfbba352d3a623a0f15))
+
+
+### Features
+
+* **docker:** enable graceful shutdown on SIGINT ([5bf1f44](https://github.com/Pragma8123/three-dog/commit/5bf1f440dd36c800f8cf39a9e84a236987aab888))
+
 ## [1.8.2](https://github.com/Pragma8123/three-dog/compare/v1.8.1...v1.8.2) (2023-01-18)
 
 

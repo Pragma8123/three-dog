@@ -1,9 +1,14 @@
 .github/
+.git/
+.husky/
+.vscode/
 dist/
+client/dist/
 temp/
 node_modules/
 
-.env
+Dockerfile
+*.env.*
 *.sqlite3
 *.exe
 *.log

@@ -2,13 +2,14 @@
 # DEVELOPMENT
 ###################
 
-FROM node:hydrogen-alpine AS development
+FROM node:18.13.0-slim AS development
 
 # Create app directory
 WORKDIR /usr/src/app
 
 # Install dependencies for node-gyp
-RUN apk add --no-cache libtool make automake autoconf g++ python3
+RUN apt-get update
+RUN apt-get install libtool-bin make python3 g++ -y
 
 # Copy application dependency manifests
 COPY --chown=node:node package*.json ./
@@ -26,19 +27,15 @@ USER node
 # BUILD
 ###################
 
-FROM node:hydrogen-alpine AS build
+FROM node:18.13.0-slim AS build
 
 WORKDIR /usr/src/app
 
 COPY --chown=node:node package*.json ./
-
 COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
-
 COPY --chown=node:node . .
 
 RUN npm run build
-
-ENV NODE_ENV production
 
 RUN npm cache clean --force
 
@@ -49,7 +46,7 @@ USER node
 # PRODUCTION
 ###################
 
-FROM node:hydrogen-alpine AS production
+FROM node:18.13.0-slim AS production
 
 WORKDIR /usr/src/app
 
@@ -65,6 +62,8 @@ ENV BOT_TOKEN=
 ENV TGG_TOKEN=
 ENV DISCORD_OAUTH_CLIENT_ID=
 ENV DISCORD_OAUTH_CLIENT_SECRET=
+
+ENV NODE_ENV production
 
 # HTTP port
 EXPOSE 3000

@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/Pragma8123/three-dog/compare/v1.9.0...v1.9.1) (2023-01-19)
+
+
+### Reverts
+
+* Revert "fix(auth): change /discord/login to a POST route" ([2e9d125](https://github.com/Pragma8123/three-dog/commit/2e9d125501f74ff4973bcbd519e59a9e760331f6))
+
 # [1.9.0](https://github.com/Pragma8123/three-dog/compare/v1.8.2...v1.9.0) (2023-01-18)
 
 

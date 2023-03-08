@@ -22,7 +22,7 @@ export class GNRService implements OnModuleInit {
 
   constructor(@InjectDiscordClient() private readonly client: Client) {}
 
-  onModuleInit() {
+  onModuleInit(): void {
     this.gnrTrack = this.loadTrack();
     this.gnrPlayer = createAudioPlayer({
       behaviors: {
@@ -45,7 +45,7 @@ export class GNRService implements OnModuleInit {
     channelId: string,
     guildId: string,
     adapterCreator: DiscordGatewayAdapterCreator,
-  ) {
+  ): void {
     const connection = joinVoiceChannel({
       channelId,
       guildId,
@@ -68,11 +68,11 @@ export class GNRService implements OnModuleInit {
     return !!getVoiceConnection(guildId);
   }
 
-  getTotalConnections() {
+  getTotalConnections(): number {
     return getVoiceConnections().size;
   }
 
-  private loadTrack() {
+  private loadTrack(): AudioResource {
     return createAudioResource('gnr.ogg');
   }
 }

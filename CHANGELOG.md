@@ -1,3 +1,11 @@
+## [1.10.1](https://github.com/Pragma8123/three-dog/compare/v1.10.0...v1.10.1) (2023-03-08)
+
+
+### Bug Fixes
+
+* **voice:** allow for infinite missed frames and listeners ([a92e30d](https://github.com/Pragma8123/three-dog/commit/a92e30d7eeff6d17e9aa73d278ca736b8137e76a))
+* **voice:** fix issue with voice disconnecting after ~1min ([55a4111](https://github.com/Pragma8123/three-dog/commit/55a4111c351a31110740ad2a21481725e9ddb8de))
+
 # [1.10.0](https://github.com/Pragma8123/three-dog/compare/v1.9.1...v1.10.0) (2023-03-08)
 
 

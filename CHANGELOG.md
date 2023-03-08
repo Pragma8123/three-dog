@@ -1,3 +1,15 @@
+# [1.10.0](https://github.com/Pragma8123/three-dog/compare/v1.9.1...v1.10.0) (2023-03-08)
+
+
+### Bug Fixes
+
+* **commands:** update commands for [@discord-nestjs](https://github.com/discord-nestjs) v5 ([0ba3caf](https://github.com/Pragma8123/three-dog/commit/0ba3caf5b1742de41b4a54f9629744e53e192758))
+
+
+### Features
+
+* **bot:** log interactions with user tag ([34a8d16](https://github.com/Pragma8123/three-dog/commit/34a8d16b6f404dadd5e1656b66f577b603074290))
+
 ## [1.9.1](https://github.com/Pragma8123/three-dog/compare/v1.9.0...v1.9.1) (2023-01-19)
 
 

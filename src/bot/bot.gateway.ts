@@ -1,6 +1,6 @@
 import { InjectDiscordClient, On, Once } from '@discord-nestjs/core';
 import { Injectable, Logger } from '@nestjs/common';
-import { Client } from 'discord.js';
+import { Client, Interaction } from 'discord.js';
 import { Cron } from '@nestjs/schedule';
 import { TggService } from '../tgg/tgg.service';
 
@@ -17,6 +17,14 @@ export class BotGateway {
   onReady() {
     this.setActivityStatus('🎙️ On Air! - /help');
     this.logger.log(`Bot ${this.client.user.tag} was started!`);
+  }
+
+  @On('interactionCreate')
+  onInteractionCreate(interaction: Interaction) {
+    if (!interaction.isCommand()) return;
+    this.logger.log(
+      `Interaction: ${interaction.commandName} from ${interaction.user.tag}`,
+    );
   }
 
   @On('error')

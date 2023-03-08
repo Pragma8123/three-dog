@@ -10,6 +10,8 @@ import {
   getVoiceConnections,
   joinVoiceChannel,
   NoSubscriberBehavior,
+  VoiceConnectionState,
+  VoiceConnectionStatus,
 } from '@discordjs/voice';
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Client } from 'discord.js';
@@ -51,9 +53,24 @@ export class GNRService implements OnModuleInit {
       guildId,
       adapterCreator,
     });
+
     if (!connection) {
       throw new Error('Could not establish a connection!');
     }
+
+    // Handle network state changes. This is a temporary workaround for a bug in Discord.js
+    connection.on(
+      'stateChange',
+      (oldState: VoiceConnectionState, newState: VoiceConnectionState) => {
+        if (
+          oldState.status === VoiceConnectionStatus.Ready &&
+          newState.status === VoiceConnectionStatus.Connecting
+        ) {
+          connection.configureNetworking();
+        }
+      },
+    );
+
     connection.subscribe(this.gnrPlayer);
   }
 

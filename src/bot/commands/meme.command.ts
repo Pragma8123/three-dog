@@ -1,5 +1,5 @@
-import { Command, DiscordCommand } from '@discord-nestjs/core';
-import { Logger } from '@nestjs/common';
+import { Command, Handler } from '@discord-nestjs/core';
+import { Injectable, Logger } from '@nestjs/common';
 import { APIEmbed, CommandInteraction, inlineCode } from 'discord.js';
 import { RedditPost, RedditService } from '../../reddit/reddit.service';
 import { BotConstants } from '../bot.constants';
@@ -8,11 +8,13 @@ import { BotConstants } from '../bot.constants';
   name: 'meme',
   description: 'Get a fresh Fallout meme',
 })
-export class MemeCommand implements DiscordCommand {
+@Injectable()
+export class MemeCommand {
   private readonly logger = new Logger(MemeCommand.name);
 
   constructor(private readonly redditService: RedditService) {}
 
+  @Handler()
   async handler(interaction: CommandInteraction): Promise<void> {
     await interaction.deferReply();
     try {

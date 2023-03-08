@@ -1,4 +1,5 @@
-import { Command, DiscordCommand } from '@discord-nestjs/core';
+import { Command, Handler } from '@discord-nestjs/core';
+import { Injectable } from '@nestjs/common';
 import { CommandInteraction, GuildMember } from 'discord.js';
 import { GNRService } from '../radio/gnr.service';
 
@@ -6,9 +7,11 @@ import { GNRService } from '../radio/gnr.service';
   name: 'tunein',
   description: 'Tune-in to GNR in your current voice channel',
 })
-export class TuneInCommand implements DiscordCommand {
+@Injectable()
+export class TuneInCommand {
   constructor(private readonly gnrService: GNRService) {}
 
+  @Handler()
   async handler(interaction: CommandInteraction): Promise<void> {
     await interaction.deferReply({ ephemeral: true });
 

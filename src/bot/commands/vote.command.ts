@@ -1,11 +1,14 @@
-import { Command, DiscordCommand } from '@discord-nestjs/core';
+import { Command, Handler } from '@discord-nestjs/core';
+import { Injectable } from '@nestjs/common';
 import { CommandInteraction } from 'discord.js';
 
 @Command({
   name: 'vote',
   description: 'Get a link to vote for the bot on Top.gg',
 })
-export class VoteCommand implements DiscordCommand {
+@Injectable()
+export class VoteCommand {
+  @Handler()
   async handler(interaction: CommandInteraction): Promise<void> {
     await interaction.reply({
       ephemeral: true,

@@ -1,4 +1,5 @@
-import { Command, DiscordCommand } from '@discord-nestjs/core';
+import { Command, Handler } from '@discord-nestjs/core';
+import { Injectable } from '@nestjs/common';
 import { CommandInteraction } from 'discord.js';
 import { BotConstants } from '../bot.constants';
 
@@ -6,7 +7,9 @@ import { BotConstants } from '../bot.constants';
   name: 'help',
   description: 'Get a list of commands for Three Dog',
 })
-export class HelpCommand implements DiscordCommand {
+@Injectable()
+export class HelpCommand {
+  @Handler()
   async handler(interaction: CommandInteraction): Promise<void> {
     await interaction.reply({
       ephemeral: true,

@@ -27,8 +27,10 @@ export class GNRService implements OnModuleInit {
     this.gnrPlayer = createAudioPlayer({
       behaviors: {
         noSubscriber: NoSubscriberBehavior.Play, // Always play our audio, even with no subs
+        maxMissedFrames: Infinity, // Don't stop playing if we miss some frames
       },
     });
+    this.gnrPlayer.setMaxListeners(Infinity); // Allow for infinite listeners
     this.gnrPlayer.play(this.gnrTrack);
 
     // Restart once our track ends

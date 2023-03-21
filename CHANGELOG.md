@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/Pragma8123/three-dog/compare/v1.10.1...v1.10.2) (2023-03-21)
+
+
+### Bug Fixes
+
+* correct event listener mem leak ([f4b5dd0](https://github.com/Pragma8123/three-dog/commit/f4b5dd098077e11e906f67734790d823fc317e3b))
+
 ## [1.10.1](https://github.com/Pragma8123/three-dog/compare/v1.10.0...v1.10.1) (2023-03-08)
 
 

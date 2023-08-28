@@ -46,7 +46,7 @@
     "@nestjs/platform-express": "^9.2.1",
     "@nestjs/schedule": "^3.0.1",
     "@nestjs/serve-static": "^3.0.1",
-    "axios": "^1.2.0",
+    "axios": "^1.5.0",
     "bulma": "^0.9.4",
     "cache-manager": "^5.1.4",
     "discord.js": "^14.8.0",

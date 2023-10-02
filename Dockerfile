@@ -2,7 +2,7 @@
 # DEVELOPMENT
 ###################
 
-FROM node:20.7.0-slim AS development
+FROM node:20.8.0-slim AS development
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -32,7 +32,7 @@ USER node
 # BUILD
 ###################
 
-FROM node:20.7.0-slim AS build
+FROM node:20.8.0-slim AS build
 
 WORKDIR /usr/src/app
 
@@ -51,7 +51,7 @@ USER node
 # PRODUCTION
 ###################
 
-FROM node:20.7.0-slim AS production
+FROM node:20.8.0-slim AS production
 
 WORKDIR /usr/src/app
 

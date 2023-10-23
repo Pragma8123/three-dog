@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/Pragma8123/three-dog/compare/v1.10.2...v1.10.3) (2023-10-23)
+
+
+### Reverts
+
+* Revert "build(actions): use npm install instead of ci" ([a3b7879](https://github.com/Pragma8123/three-dog/commit/a3b7879501e8f6c4b66182039378f3ab9b0531b7))
+
 ## [1.10.2](https://github.com/Pragma8123/three-dog/compare/v1.10.1...v1.10.2) (2023-03-21)
 
 

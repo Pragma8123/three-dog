@@ -1,3 +1,16 @@
+# [1.11.0](https://github.com/Pragma8123/three-dog/compare/v1.10.3...v1.11.0) (2024-01-09)
+
+
+### Bug Fixes
+
+* **deps:** npm audit fix --force ([6d538c9](https://github.com/Pragma8123/three-dog/commit/6d538c901af8b4a2a8a6b61cbada8e4ac47111a9))
+* **deps:** update axios to equivalent version in nestjs/axios ([844646d](https://github.com/Pragma8123/three-dog/commit/844646d8d03fe0c3b4da78bbdb22ab144f103240))
+
+
+### Features
+
+* **reddit:** cache requests to reddit ([0a2abdc](https://github.com/Pragma8123/three-dog/commit/0a2abdc995ef45e9dbdebeb3d8eb240aa64a3e92))
+
 ## [1.10.3](https://github.com/Pragma8123/three-dog/compare/v1.10.2...v1.10.3) (2023-10-23)
 
 

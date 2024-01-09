@@ -1,5 +1,7 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { type Cache } from 'cache-manager';
+import { Inject, Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { firstValueFrom } from 'rxjs';
 
@@ -36,16 +38,31 @@ export type ListingOptions = {
 
 @Injectable()
 export class RedditService {
-  constructor(private readonly httpService: HttpService) {}
+  constructor(
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    private readonly httpService: HttpService,
+  ) {}
 
-  getListing(
+  async getListing(
     subreddit: string,
     options?: ListingOptions,
   ): Promise<AxiosResponse<ListingResponse>> {
-    return firstValueFrom(
+    let res = await this.cacheManager.get<AxiosResponse<ListingResponse>>(
+      subreddit,
+    );
+
+    if (res) {
+      return res;
+    }
+
+    res = await firstValueFrom(
       this.httpService.get<ListingResponse>(`r/${subreddit}.json`, {
         params: options,
       }),
     );
+
+    await this.cacheManager.set(subreddit, res);
+
+    return res;
   }
 }

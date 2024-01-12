@@ -2,7 +2,7 @@
 # DEVELOPMENT
 ###################
 
-FROM node:21.5.0-slim AS development
+FROM node:lts-iron AS development
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -32,7 +32,7 @@ USER node
 # BUILD
 ###################
 
-FROM node:21.5.0-slim AS build
+FROM node:lts-iron AS build
 
 WORKDIR /usr/src/app
 
@@ -51,7 +51,7 @@ USER node
 # PRODUCTION
 ###################
 
-FROM node:21.5.0-slim AS production
+FROM node:lts-iron AS production
 
 WORKDIR /usr/src/app
 

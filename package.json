@@ -36,7 +36,7 @@
     "@mikro-orm/migrations": "^5.7.14",
     "@mikro-orm/nestjs": "^5.1.7",
     "@mikro-orm/reflection": "^5.7.14",
-    "@mikro-orm/sqlite": "^5.7.14",
+    "@mikro-orm/sqlite": "^6.1.10",
     "@nestjs/axios": "^3.0.1",
     "@nestjs/cache-manager": "^2.2.0",
     "@nestjs/common": "^9.4.0",

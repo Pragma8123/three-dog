@@ -2,11 +2,13 @@ import { HttpModule } from '@nestjs/axios';
 import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { RedditService } from './reddit.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule,
     HttpModule.register({
-      baseURL: 'https://reddit.com/',
+      baseURL: 'https://oauth.reddit.com/',
     }),
     CacheModule.register(),
   ],

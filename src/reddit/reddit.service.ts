@@ -4,6 +4,7 @@ import { type Cache } from 'cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { firstValueFrom } from 'rxjs';
+import { ConfigService } from '@nestjs/config';
 
 export type RedditPost = {
   data: {
@@ -36,12 +37,41 @@ export type ListingOptions = {
   limit?: number;
 };
 
+export type AccessTokenResponse = {
+  access_token: string;
+};
+
 @Injectable()
 export class RedditService {
   constructor(
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
     private readonly httpService: HttpService,
+    private readonly configService: ConfigService,
   ) {}
+
+  async getAccessToken() {
+    const form = new FormData();
+    form.append('grant_type', 'client_credentials');
+    const res = await firstValueFrom(
+      this.httpService.post<AccessTokenResponse>(
+        'https://www.reddit.com/api/v1/access_token',
+        form,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          auth: {
+            username: this.configService.get<string>('REDDIT_OAUTH_CLIENT_ID'),
+            password: this.configService.get<string>(
+              'REDDIT_OAUTH_CLIENT_SECRET',
+            ),
+          },
+        },
+      ),
+    );
+
+    return res.data.access_token;
+  }
 
   async getListing(
     subreddit: string,
@@ -55,9 +85,14 @@ export class RedditService {
       return res;
     }
 
+    const accessToken = await this.getAccessToken();
+
     res = await firstValueFrom(
-      this.httpService.get<ListingResponse>(`r/${subreddit}.json`, {
+      this.httpService.get<ListingResponse>(`r/${subreddit}`, {
         params: options,
+        headers: {
+          Authorization: `bearer ${accessToken}`,
+        },
       }),
     );
 

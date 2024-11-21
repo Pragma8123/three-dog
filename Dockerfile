@@ -2,7 +2,7 @@
 # DEVELOPMENT
 ###################
 
-FROM node:lts-iron AS development
+FROM node:lts-jod AS development
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -32,7 +32,7 @@ USER node
 # BUILD
 ###################
 
-FROM node:lts-iron AS build
+FROM node:lts-jod AS build
 
 WORKDIR /usr/src/app
 
@@ -51,7 +51,7 @@ USER node
 # PRODUCTION
 ###################
 
-FROM node:lts-iron AS production
+FROM node:lts-jod AS production
 
 WORKDIR /usr/src/app
 

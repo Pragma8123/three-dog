@@ -2,7 +2,6 @@ import { HttpService } from '@nestjs/axios';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { type Cache } from 'cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
-import { AxiosResponse } from 'axios';
 import { firstValueFrom } from 'rxjs';
 import { ConfigService } from '@nestjs/config';
 
@@ -76,18 +75,15 @@ export class RedditService {
   async getListing(
     subreddit: string,
     options?: ListingOptions,
-  ): Promise<AxiosResponse<ListingResponse>> {
-    let res = await this.cacheManager.get<AxiosResponse<ListingResponse>>(
-      subreddit,
-    );
+  ): Promise<ListingResponse> {
+    let listing = await this.cacheManager.get<ListingResponse>(subreddit);
 
-    if (res) {
-      return res;
+    if (listing) {
+      return listing;
     }
 
     const accessToken = await this.getAccessToken();
-
-    res = await firstValueFrom(
+    const res = await firstValueFrom(
       this.httpService.get<ListingResponse>(`r/${subreddit}`, {
         params: options,
         headers: {
@@ -96,8 +92,10 @@ export class RedditService {
       }),
     );
 
-    await this.cacheManager.set(subreddit, res);
+    listing = res.data;
 
-    return res;
+    await this.cacheManager.set(subreddit, listing);
+
+    return listing;
   }
 }

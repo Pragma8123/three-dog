@@ -29,12 +29,12 @@ export class MemeCommand {
   }
 
   async getRandomFalloutMeme(): Promise<RedditPost> {
-    const response = await this.redditService.getListing('falloutmemes', {
+    const listing = await this.redditService.getListing('falloutmemes', {
       sort: 'top',
       time: 'day',
       limit: 50,
     });
-    const posts = this.filterPosts(response.data.data.children);
+    const posts = this.filterPosts(listing.data.children);
     const post = posts[Math.floor(Math.random() * posts.length)];
     return post;
   }

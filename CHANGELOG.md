@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/Pragma8123/three-dog/compare/v1.11.0...v1.11.1) (2024-11-21)
+
+
+### Bug Fixes
+
+* **reddit:** fix errors on meme command ([54a2af3](https://github.com/Pragma8123/three-dog/commit/54a2af3791ac142fb0d88e635b3b7f2208b87df0))
+
 # [1.11.0](https://github.com/Pragma8123/three-dog/compare/v1.10.3...v1.11.0) (2024-01-09)
 
 

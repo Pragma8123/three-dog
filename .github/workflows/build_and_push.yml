@@ -27,7 +27,6 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
-          tags: ${{ github.ref_name }},latest
 
       - name: Build and push
         uses: docker/build-push-action@v5
@@ -37,3 +36,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

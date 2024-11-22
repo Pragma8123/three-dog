@@ -40,9 +40,7 @@ COPY --chown=node:node package*.json ./
 COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node . .
 
-RUN npm run build
-
-RUN npm cache clean --force
+RUN npm run build && npm cache clean --force
 
 USER node
 
@@ -66,14 +64,7 @@ COPY --chown=node:node --from=build /usr/src/app/dist ./dist
 COPY --chown=node:node --from=build /usr/src/app/client/dist ./client/dist
 COPY --chown=node:node --from=build /usr/src/app/gnr.ogg .
 
-# External environment variables
-ENV APP_URL=
-ENV BOT_TOKEN=
-ENV TGG_TOKEN=
-ENV DISCORD_OAUTH_CLIENT_ID=
-ENV DISCORD_OAUTH_CLIENT_SECRET=
-
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # HTTP port
 EXPOSE 3000

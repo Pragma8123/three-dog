@@ -2,7 +2,6 @@ import { DiscordModule } from '@discord-nestjs/core';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { GatewayIntentBits } from 'discord.js';
 import { join } from 'path';
 import { BotModule } from './bot/bot.module';
@@ -34,7 +33,6 @@ import { ScheduleModule } from '@nestjs/schedule';
       }),
       inject: [ConfigService],
     }),
-    MikroOrmModule.forRoot(),
     ScheduleModule.forRoot(),
     BotModule,
     RedditModule,

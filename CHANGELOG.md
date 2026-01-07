@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/Pragma8123/three-dog/compare/v1.11.1...v1.11.2) (2026-01-07)
+
+
+### Bug Fixes
+
+* **deps:** fix audio issues ([68f09e4](https://github.com/Pragma8123/three-dog/commit/68f09e4eccdada093e4b74d055c0824171ab4998))
+
 ## [1.11.1](https://github.com/Pragma8123/three-dog/compare/v1.11.0...v1.11.1) (2024-11-21)
 
 

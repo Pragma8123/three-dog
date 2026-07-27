@@ -10,7 +10,7 @@ export class TggService {
   async postStats(
     botId: string,
     serverCount: number,
-  ): Promise<AxiosResponse<any>> {
+  ): Promise<AxiosResponse<unknown>> {
     return firstValueFrom(
       this.httpService.post(`/bots/${botId}/stats`, {
         server_count: serverCount,
